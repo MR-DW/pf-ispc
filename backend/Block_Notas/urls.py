@@ -2,10 +2,12 @@
 # Import del modulo path
 from django.urls import path
 # Import servicios 
-from Block_Notas.views import NotasPostApiView
-from Block_Notas.views import NotasApiView
+from Block_Notas.views import (CrearNotas, EditarBorrarNotas, MostrarNotas)
+
+
 
 urlpatterns = [
-    path('notas-lista/', NotasApiView.as_view(), name='listado-de-notas'),
-    path('nueva-nota/', NotasPostApiView.as_view(), name='crear-notas'),
+    path('notas-lista/', MostrarNotas.as_view(), name='listado-de-notas'),
+    path('nueva-nota/', CrearNotas.as_view(), name='crear-notas'),
+    path('custom-nota/<int:pk>/', EditarBorrarNotas.as_view(), name='editar-o-eliminar-nota'),
 ]
