@@ -32,6 +32,37 @@ class NotasApiView(APIView):
            status=status.HTTP_200_OK
         )
 
+class NotasPostApiView(APIView):
+
+        def post(self, request):
+
+            """Me permite crear una nota"""
+
+            nueva_nota_serializer =  NotasSerializers(data = request.data)
+            print(nueva_nota_serializer)
+
+            if nueva_nota_serializer.is_valid():
+                nueva_nota_serializer.save()
+                
+                data = {
+                'mensaje': 'Tu nota fue creada correctamente'
+                    }
+
+                return Response(
+                    data = data,
+                    status = status.HTTP_201_CREATED
+                )
+            return Response(
+            data = nueva_nota_serializer.errors,
+            status = status.HTTP_400_BAD_REQUEST
+            )
+
+        
+        # print(usuarios_serializer)
+
+        # print(usuarios_serializer.data)
+        
+        
 
 # class UsuariosApiView(APIView):
 #     def get(self, request):
