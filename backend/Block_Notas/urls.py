@@ -2,8 +2,8 @@
 # Import del modulo path
 from django.urls import path
 # Import servicios 
-from Block_Notas.views import UsuariosApiView
+from Block_Notas.views import NotasApiView
 
 urlpatterns = [
-    path('usuario-lista/', UsuariosApiView.as_view(), name='usuarios_lista'),
+    path('notas-lista/', NotasApiView.as_view(), name='listado-de-notas'),
 ]

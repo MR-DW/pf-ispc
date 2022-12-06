@@ -2,10 +2,17 @@
 from rest_framework import serializers
 
 # Import modelo
-from Block_Notas.models import Usuarios
+# from Block_Notas.models import Usuarios
+from Block_Notas.models import Notas
 
-class UsuariosSerializers(serializers.ModelSerializer):
+class NotasSerializers(serializers.ModelSerializer):
     class Meta:
-        model = Usuarios
+        model = Notas
         fields = '__all__'
+
+
+# class UsuariosSerializers(serializers.ModelSerializer):
+#     class Meta:
+#         model = Usuarios
+#         fields = '__all__'
 

@@ -6,33 +6,52 @@ from rest_framework.response import Response
 from rest_framework import status
 
 # Models imports
-from Block_Notas.models import Usuarios
+# from Block_Notas.models import Usuarios
+from Block_Notas.models import Notas
 
 # Import Serializer
-from Block_Notas.serializers import UsuariosSerializers
+# from Block_Notas.serializers import UsuariosSerializers
+from Block_Notas.serializers import NotasSerializers
 
 
 # Create your views here.
-
-class UsuariosApiView(APIView):
+class NotasApiView(APIView):
     def get(self, request):
-        """Retrona listado de usuarios"""
+        """Retrona listado de las notas creadas"""
 
-        usuarios = Usuarios.objects.all()
+        notas = Notas.objects.all()
 
-        # print(usuarios.values())
+        notas_serializer =  NotasSerializers(notas, many=True)
 
-        usuarios_serializer =  UsuariosSerializers(usuarios, many=True)
+        # print(usuarios_serializer)
 
-        print(usuarios_serializer)
-
-        print(usuarios_serializer.data)
-        
-        # data = {'Usuarios':'hola'}
+        # print(usuarios_serializer.data)
         
         return Response(
-           data = usuarios_serializer.data,
+           data = notas_serializer.data,
            status=status.HTTP_200_OK
         )
+
+
+# class UsuariosApiView(APIView):
+#     def get(self, request):
+#         """Retrona listado de usuarios"""
+
+#         usuarios = Usuarios.objects.all()
+
+#         # print(usuarios.values())
+
+#         usuarios_serializer =  UsuariosSerializers(usuarios, many=True)
+
+#         print(usuarios_serializer)
+
+#         print(usuarios_serializer.data)
+        
+#         # data = {'Usuarios':'hola'}
+        
+#         return Response(
+#            data = usuarios_serializer.data,
+#            status=status.HTTP_200_OK
+#         )
 
 
