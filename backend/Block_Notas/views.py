@@ -14,11 +14,11 @@ from Block_Notas.serializers import UsuariosSerializers
 
 # Create your views here.
 
-class LoginApiView(APIView):
+class UsuariosApiView(APIView):
     def get(self, request):
         """Retrona listado de usuarios"""
 
-        usuarios = Usuarios.objects.all
+        usuarios = Usuarios.objects.all()
 
         # print(usuarios.values())
 

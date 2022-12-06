@@ -39,10 +39,10 @@ BASE_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = [
-    'Block_Notas'
+    'Block_Notas',
 ]
 THIRD_APPS = [
-    'rest_framework'
+    'rest_framework',
 ]
 INSTALLED_APPS = (BASE_APPS + LOCAL_APPS + THIRD_APPS)
 
