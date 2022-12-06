@@ -8,25 +8,25 @@
 from django.db import models
 
 
-class Login(models.Model):
+class Notas(models.Model):
+    id_notas = models.AutoField(primary_key=True)
+    titulo = models.CharField(max_length=100)
+    cuerpo = models.TextField()
+    id_usuarios = models.ForeignKey('Usuarios', models.DO_NOTHING, db_column='id_usuarios')
+
+    class Meta:
+        verbose_name = 'nota'
+        verbose_name_plural = 'notas'
+        db_table = 'notas'
+
+
+class Usuarios(models.Model):
     id_usuaruios = models.AutoField(primary_key=True)
     nombres = models.CharField(db_column='Nombres', max_length=50)  # Field name made lowercase.
     apellidos = models.CharField(db_column='Apellidos', max_length=50)  # Field name made lowercase.
     mail = models.CharField(db_column='Mail', max_length=50)  # Field name made lowercase.
 
     class Meta:
-        verbose_name = 'Usuario'
-        verbose_name_plural = 'Usuarios'
-        db_table = 'login'
-
-
-class Notas(models.Model):
-    id_notas = models.AutoField(primary_key=True)
-    titulo = models.CharField(max_length=100)
-    cuerpo = models.TextField()
-    id_usuarios = models.ForeignKey(Login, models.DO_NOTHING, db_column='id_usuarios')
-
-    class Meta:
-        verbose_name = 'Nota'
-        verbose_name_plural = 'Notas'
-        db_table = 'notas'
+        verbose_name = 'usuario'
+        verbose_name_plural = 'usuarios'
+        db_table = 'usuarios'
