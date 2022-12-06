@@ -39,7 +39,7 @@ BASE_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = [
-
+    'Block_Notas'
 ]
 THIRD_APPS = [
     'rest_framework'
