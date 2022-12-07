@@ -39,7 +39,6 @@ BASE_APPS = [
     'django.contrib.staticfiles',
 ]
 LOCAL_APPS = [
-    # 'Usuarios',
     'Block_Notas',
 ]
 THIRD_APPS = [

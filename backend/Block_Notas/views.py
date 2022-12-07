@@ -11,7 +11,7 @@ from Block_Notas.models import Usuarios
 
 # Import Serializer
 from Block_Notas.serializers import NotasSerializers
-from Usuarios.serializers import UsuariosSerializers
+from Block_Notas.serializers import UsuariosSerializers
 
 
 
@@ -19,27 +19,27 @@ from Usuarios.serializers import UsuariosSerializers
 
 # METODO GET PARA EL USUARIO.
 class UsuariosApiView(APIView):
-    def post(self, request, pk):
+    def get(self, request, pk):
         """Retrona listado de usuarios"""
         try:
-          usuarios = Usuarios.objects.get(id_usuarios = pk)
+                usuarios = Usuarios.objects.get(id_usuarios = pk)
+              
+                usuarios_serializer = UsuariosSerializers(usuarios)
 
-          usuarios_serializer = UsuariosSerializers(usuarios)
-        
-          data = {'Mensaje':'Bienvenido ...'}
-        
-          return Response(
-              data = usuarios_serializer.data,
-              status = status.HTTP_200_OK
-          )
+                data = {'Mensaje':f'Bienvenido {usuarios.nombres} {usuarios.apellidos}'}
+                
+                return Response(
+                    data = data,
+                    status = status.HTTP_200_OK
+                )
         except:
-              data ={
-              'mensaje':'Usuario inexistente'
-              }
-              return Response(
-                  data = data,
-                  status=status.HTTP_400_BAD_REQUEST
-              )
+                data ={
+                'mensaje':'Usuario inexistente'
+                }
+                return Response(
+                    data = data,
+                    status=status.HTTP_400_BAD_REQUEST
+                )
 
 
 # Create your views here.   
@@ -102,10 +102,6 @@ class CrearNotas(APIView):
             status = status.HTTP_400_BAD_REQUEST
             )
 
-        
-        # print(usuarios_serializer)
-
-        # print(usuarios_serializer.data)
         
         
 

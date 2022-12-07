@@ -6,5 +6,5 @@ from Block_Notas.views import UsuariosApiView
 
 
 urlpatterns = [
-    path('usuario/<int:pk>/', UsuariosApiView.as_view(), name='usuario'),
+    path('<int:pk>/', UsuariosApiView.as_view(), name='usuario'),
 ]

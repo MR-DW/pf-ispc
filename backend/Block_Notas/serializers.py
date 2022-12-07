@@ -2,7 +2,7 @@
 from rest_framework import serializers
 
 # Import modelo
-from Usuarios.models import Usuarios
+from Block_Notas.models import Usuarios
 
 # Import modelo
 from Block_Notas.models import Notas
