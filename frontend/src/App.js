@@ -17,9 +17,9 @@ function App() {
 
       <Card/>
 
-      <VerNotaIndividual/>
+      {/* <VerNotaIndividual/> */}
 
-      <CrearNota/>
+      {/* <CrearNota/> */}
       
     </div>
   );

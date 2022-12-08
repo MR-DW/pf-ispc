@@ -1,6 +1,20 @@
 import React from 'react'
 
 export function CrearNota() {
+
+
+
+
+
+
+
+
+
+
+
+
+
+    
   return (
     <div>
         <div class="mb-3">
@@ -15,3 +29,4 @@ export function CrearNota() {
     </div>
   )
 }
+ 
