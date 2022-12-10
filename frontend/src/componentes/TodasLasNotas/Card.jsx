@@ -1,29 +1,69 @@
-import React, { useState } from 'react'
+import React from 'react'
 import {render} from '@testing-library/react'
-import {getNota, infoNota} from '../../ServiciosApi/TraerNotas'
-
-
+import * as TraerNotas from '../../ServiciosApi/TraerNotas'
+import { useEffect, useState } from 'react';
+// useEffect,
+// import { data } from 'cypress/types/jquery';
 
 export function Card(){
 
-  const [notas, setNota] = useState(infoNota);
-
-  const mostrarNotas = () => {
+   // useState
+  // const initial = {
+  //   'id_notas':0,
+  //   'titulo':'Titulo',
+  //   'cuerpo':'Aquí se desarrolla tu nota',
+  //   'id_usuarios':0
+  // };
+  const [nota, setNotas] = useState([]);
+  // console.log(nota)
   
-    const res = getNota();
-    const data = res.json();
-    const { titulo, cuerpo } = data.notas;
-    setNota({ titulo, cuerpo });
-    
-}
+  // Funcion para traer notas
+  const MostrarNotas = async () => {
+    try{
+      const res = await TraerNotas.getNotas();
+      // console.log(res);
+      const data = await res.json();
+      // console.log(data);
+      // var titulo = data.titulo;
+      // var cuerpo = data.cuerpo;
+      
+      // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
+      setNotas(data);
+      // setNotas({ titulo, cuerpo });
+    } catch(error){
+            console.log(error);
+      }
+  };
+  // MostrarNotas();
+
+  // useEffect
+  useEffect(() => {
+    MostrarNotas();
+  }, []);
+
+  // const handleChange = (e) => {
+  //   setNotas({ ...nota, [e.target.name]: e.target.value });
+  //   MostrarNotas();
+  //   // const card = document.getElementById('card');
+  
+  //   // card.addEventListener('load', () => {
+  //   //   MostrarNotas();
+  //   // })
+  // }
 
   render (
     <div>
-        <div class="card">
-            <div class="card-body">
-                <h5 class="card-title">{notas.titulo}</h5>
-                <p class="card-text">{notas.cuerpo}</p>
-                <button type="button" class="btn btn-primary" >Ver Nota</button>
+        <div className="card" id='card'>
+            <div className="card-body">
+                {/* { !notas ? 'Cargando...' : notas.map((nota, index) => { */}
+                  {/* // return   */}
+                <h5 className="card-title" >{nota.titulo} </h5>
+                {/* }) } */}
+                {/* //onChange={handleChange} */}
+                
+                <p className="card-text" >{nota.cuerpo}</p>
+                {/* // onLoad={handleLoad} */}
+                <button type="button" className="btn btn-primary" >Ver Nota</button>
             </div>
         </div> 
     </div>
