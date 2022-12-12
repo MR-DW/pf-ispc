@@ -20,9 +20,9 @@ export const getNotas = async () => {
 // API PARA CREAR UNA Nota
 const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
 
-export const crearNotas = async (newNota) => {
+export const crearNotas = (newNota) => {
 
-  return await fetch(
+  return fetch(
     // API_URL,
     URL_CREAR_NOTAS,
     {method: 'POST',
@@ -31,8 +31,10 @@ export const crearNotas = async (newNota) => {
     },
     // mode: 'no-cors',
     body: JSON.stringify({
+      // id_notas: Int(newNota.id_notas),
       titulo: String(newNota.titulo).trim(),
       cuerpo: String(newNota.cuerpo).trim(),
+      id_usuarios: Number(newNota.id_usuarios)
     })
   });
 };
