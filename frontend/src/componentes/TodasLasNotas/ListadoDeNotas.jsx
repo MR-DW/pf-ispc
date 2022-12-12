@@ -4,6 +4,9 @@ import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 import { useEffect, useState } from 'react';
 // import { useParams, useNavigate } from 'reac.router-dom'
 
+// import link para dirigirme a una nota especifica. y poder editarla.
+// import { Link } from 'react-router-dom';
+
 export function ListadoDeNotas(){
 
   // useParams, useNAvigate
@@ -40,7 +43,11 @@ export function ListadoDeNotas(){
             <div className="card-body">    
               <h5 className="card-title">{nota.titulo}</h5>               
               <p className="card-text">{nota.cuerpo}</p>
-              <button type="button" className="btn btn-primary" >Ver Nota</button>
+              <button type="button" className="btn btn-primary" >
+                {/* <Link aria-current="page" to={require(`/personalizar-nota/${nota.id_notas}/`)}>  */}
+                  Mis Notas
+                {/* </Link> */}
+              </button>
             </div>
         </div>
         )}

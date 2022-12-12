@@ -44,6 +44,7 @@ class UsuariosApiView(APIView):
 
 # Create your views here.   
 # METODOS PARA NOTAS
+# Mostrar Todas Las Notas
 class MostrarNotas(APIView):
     def get(self, request):
         """Retrona listado de las notas creadas"""
@@ -57,7 +58,8 @@ class MostrarNotas(APIView):
            status=status.HTTP_200_OK
         )
 
-class EditarBorrarNotas(APIView):
+# Mostrar Una Las Notas
+class TraerUnaNota(APIView):
     def get(self, request, pk):
         """Retrona una nota del listado de notas."""
         try:
@@ -77,6 +79,51 @@ class EditarBorrarNotas(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+# Editar y Borrar Una Nota
+class EditarBorrarNota(APIView):
+    def put(self, request, pk):
+        """Modifica una nota particular."""
+        try:
+            nota = Notas.objects.get(id_notas = pk)
+            custom_nota_serializer =  NotasSerializers(nota, data = request.data)
+            # print(custom_nota_serializer.value())
+            if custom_nota_serializer.is_valid():
+                custom_nota_serializer.save()
+                return Response(
+                    data = custom_nota_serializer.data,
+                    status=status.HTTP_200_OK
+                )
+        except:    
+            data ={
+                'mensaje':'Tu nota no fue encontrada'
+            }
+            return Response(
+                data = data,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+    def delete(self, request, pk):
+        """Elimina una nota particular."""
+        try:
+            nota = Notas.objects.get(id_notas = pk)
+            nota.delete()
+            data = {
+                'mensaje':'Tu nota ha sido eliminada correctamente',
+            }
+            return Response(
+                data = data,
+                status = status.HTTP_200_OK,
+            )
+        except:    
+            data ={
+                'mensaje':'Tu nota no fue encontrada'
+            }
+            return Response(
+                data = data,
+                status=status.HTTP_400_BAD_REQUEST
+            )
+
+# Crear Una Nota
 class CrearNotas(APIView):
 
         def post(self, request):

@@ -10,7 +10,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // importar Componentes Propios
 import { NavBar } from './componentes/NavBar';
 import { CrearNota } from './componentes/CrearNota/CrearNota';
-// import { ListadoDeNotas } from './componentes/TodasLasNotas/Card';
+// import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
 import { VerNotaIndividual } from './componentes/VistaNota/VerNotaIndividual'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
@@ -19,7 +19,8 @@ root.render(
   <>
     {/* NavBar */}
       <BrowserRouter>
-        <NavBar/> {/*Siempre debe estar dentro del BrowserRouter*/}
+        <NavBar/> 
+        {/* Siempre debe estar dentro del BrowserRouter */}
             <Routes>
               {/* <Route path='/login' element={</>} /> */}
               <Route exact path='/' element={<App/>} />

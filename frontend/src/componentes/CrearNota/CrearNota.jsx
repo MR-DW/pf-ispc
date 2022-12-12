@@ -1,53 +1,52 @@
-import React, {useState, useEffect } from "react";
+import React, {useState } from "react";
+// , useEffect
+import { useNavigate, useParams } from 'react-router-dom'
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
+// import * as ListadoDeNotas from '../TodasLasNotas/ListadoDeNotas'
 
 export function CrearNota() {
 
+  // console.log(ListadoDeNotas.nota)
+  // useParams - useNavigate
+  var history = useNavigate();
+  var params = useParams();
+
    // useState
-  // const initial = {
-  //   'id_notas':0,
-  //   'titulo':'Titulo',
-  //   'cuerpo':'Aquí se desarrolla tu nota',
-  //   'id_usuarios':0
-  // };
-  const [nuevaNota, setNuevaNota] = useState(TraerNotas.infoNota);
-  // console.log(nota)
-  
-  // Funcion para traer notas
-  const crearNuevaNota = async () => {
-    try{
-      const res = await TraerNotas.crearNotas();
-      const data = await res.json();
-      console.log(data);
-      
-      // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
-      // setNuevaNota(data);
-      const { titulo, cuerpo } = data.nuevaNota;
-      setNuevaNota({ titulo, cuerpo });
-    } catch(error){
-            console.log(error);
+  const [nuevaNota, setNuevaNota] = useState([]);
+
+  var res;
+  const handleSubmit = async (e) => {
+      console.log('HANDLESUBMIT:', nuevaNota);
+      e.preventDefault();
+   
+      try {
+        // if(!params.id_notas){
+          // console.log('Entra en params.id_notas NO EXISTE');
+        res = await TraerNotas.crearNotas(params);
+        console.log('RES:', res);
+        const data = await res.json(); 
+        console.log('DATA:', data);
+          // setNuevaNota(data);
+          // if (data.id_notas !== 0){
+              // console.log('No hay params iguales a los id de las notas');
+        setNuevaNota(TraerNotas.infoNota);
+        console.log('setNuevaNota:',setNuevaNota(nuevaNota))
+        history('/')
+      }catch(error){
+        console.log(error);
       }
   };
 
-  // useEffect
-  // useEffect(() => {
-  //   crearNuevaNota();
-  // }, []);
-
-  const handleClick = (e) => {
-      setNuevaNota({ ...nuevaNota, [e.target.name]: e.target.value });
-      crearNuevaNota();
+  const handleInputChange = (e) =>{
+    setNuevaNota({...nuevaNota, [e.target.name]: e.target.value});
+    console.log('name:',e.target.name);
+    console.log('value:',e.target.value);
+    console.log('nuevaNota',nuevaNota)
   };
-  
-  
-    // const card = document.getElementById('card');
-  
-    // card.addEventListener('load', () => {
- 
 
   return (
     <>
-      <div>
+      <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label for="exampleFormControlInput1" className="form-label">
             Titulo Nota
@@ -57,7 +56,9 @@ export function CrearNota() {
             className="form-control"
             id="exampleFormControlInput1"
             placeholder="Elige tu Titulo"
-            value={nuevaNota.titulo}
+            name="titulo"
+            value = {nuevaNota.titulo}
+            onChange = {handleInputChange}
           ></input>
         </div>
         <div className="mb-3">
@@ -69,13 +70,43 @@ export function CrearNota() {
             id="exampleFormControlTextarea1"
             rows="3"
             placeholder="Desarrolla tu nota..."  
+            name="cuerpo"
             value={nuevaNota.cuerpo}
+            onChange = {handleInputChange}
           ></textarea>
         </div>
-        <button type="button" className="btn btn-primary"  onClick={handleClick} >
+        <button type="submit" className="btn btn-primary" >
           Crear Nota
         </button>
-      </div>
+      </form>
     </>
   )
 };
+
+
+  // console.log(nota)
+  // Funcion para guardar la nota en base de datos
+  // const crearNuevaNota = async () => {
+  //   try{
+  //     const res = await TraerNotas.crearNotas();
+  //     const data = await res.json();
+  //     console.log(data);
+  //     // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
+  //     // setNuevaNota(data);
+  //     const { titulo, cuerpo } = data.nuevaNota;
+  //     setNuevaNota({ titulo, cuerpo });
+  //   } catch(error){
+  //           console.log(error);
+  //     }
+  // };
+
+   
+  
+    // const card = document.getElementById('card');
+  
+    // card.addEventListener('load', () => {
+
+      // useEffect
+  // useEffect(() => {
+  //   crearNuevaNota();
+  // }, []);
