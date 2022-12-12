@@ -2,28 +2,30 @@
 import './App.css';
 // Import componentes
 import { Card } from './componentes/TodasLasNotas/Card';
-// import { VerNotaIndividual} from './componentes/VistaNota/nota'
+import { VerNotaIndividual} from './componentes/VistaNota/nota'
 import { NavBar } from './componentes/NavBar';
-// import { CrearNota } from './componentes/CrearNota/CrearNota';
+import { CrearNota } from './componentes/CrearNota/CrearNota';
 
 
 function App() {
 
   
   return (
-    <div className="App">
+    <>
+      <div className="App">
+        
+        <NavBar/>
       
-      <NavBar/>
-     
-      <h1 className="titulo" >Tus Notas</h1>
+        <h1 className="titulo" >Tus Notas</h1>
 
-      <Card/>
+        <Card/>
 
-      {/* <VerNotaIndividual/> */}
+        <VerNotaIndividual/>
 
-      {/* <CrearNota/> */}
-      
-    </div>
+        <CrearNota/>
+        
+      </div>
+    </>
   );
 } 
 

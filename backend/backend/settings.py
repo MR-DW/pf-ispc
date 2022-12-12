@@ -43,7 +43,7 @@ LOCAL_APPS = [
 ]
 THIRD_APPS = [
     'rest_framework',
-     'corsheaders',
+    'corsheaders',
 ]
 INSTALLED_APPS = (BASE_APPS + LOCAL_APPS + THIRD_APPS)
 
@@ -99,7 +99,7 @@ WSGI_APPLICATION = 'backend.wsgi.application'
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'block_notas_ispc',
+        'NAME': 'block_notas',
         'USER': 'root',
         'PASSWORD': '',
         'HOST': '127.0.0.1',

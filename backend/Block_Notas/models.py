@@ -10,21 +10,17 @@ from django.db import models
 
 class Notas(models.Model):
     id_notas = models.AutoField(primary_key=True)
-    titulo = models.CharField(max_length=100)
+    titulo = models.TextField()
     cuerpo = models.TextField()
     id_usuarios = models.ForeignKey('Usuarios', models.DO_NOTHING, db_column='id_usuarios')
-        
+
     def __str__(self):
         texto = '({0}) {1}'
         return texto.format(self.id_notas, self.titulo)
     class Meta:
-            verbose_name = 'nota'
-            verbose_name_plural = 'notas'
-            db_table = 'notas'
-            
-    
-       
-    
+        verbose_name = 'nota'
+        verbose_name_plural = 'notas'
+        db_table = 'notas'
 
 
 class Usuarios(models.Model):
@@ -40,4 +36,3 @@ class Usuarios(models.Model):
         verbose_name = 'Usuario'
         verbose_name_plural = 'Usuarios'
         db_table = 'usuarios'
-       

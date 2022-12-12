@@ -2,7 +2,7 @@ import React from "react";
 
 export function Cuerpo() {
   return (
-    
+    <>
       <div className="card">
         <div className="card-body">
           <h5 className="card-title">TITULO DE LA NOTA</h5>
@@ -12,6 +12,6 @@ export function Cuerpo() {
          
         </div>
       </div>
-    
+    </>
   );
 }

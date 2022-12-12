@@ -1,9 +1,9 @@
 import React from 'react'
-import {render} from '@testing-library/react'
+// import {render} from '@testing-library/react'
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 import { useEffect, useState } from 'react';
 // useEffect,
-// import { data } from 'cypress/types/jquery';
+
 
 export function Card(){
 
@@ -23,7 +23,7 @@ export function Card(){
       const res = await TraerNotas.getNotas();
       // console.log(res);
       const data = await res.json();
-      // console.log(data);
+      console.log(data);
       // var titulo = data.titulo;
       // var cuerpo = data.cuerpo;
       
@@ -42,30 +42,30 @@ export function Card(){
   }, []);
 
   // const handleChange = (e) => {
-  //   setNotas({ ...nota, [e.target.name]: e.target.value });
-  //   MostrarNotas();
-  //   // const card = document.getElementById('card');
+    // setNotas({ ...nota, [e.target.name]: e.target.value });
+    // MostrarNotas();
+    // const card = document.getElementById('card');
   
-  //   // card.addEventListener('load', () => {
-  //   //   MostrarNotas();
-  //   // })
-  // }
+    // card.addEventListener('load', () => {
+    //   MostrarNotas();
+    // })
 
-  render (
-    <div>
-        <div className="card" id='card'>
-            <div className="card-body">
-                {/* { !notas ? 'Cargando...' : notas.map((nota, index) => { */}
-                  {/* // return   */}
-                <h5 className="card-title" >{nota.titulo} </h5>
-                {/* }) } */}
-                {/* //onChange={handleChange} */}
-                
-                <p className="card-text" >{nota.cuerpo}</p>
-                {/* // onLoad={handleLoad} */}
-                <button type="button" className="btn btn-primary" >Ver Nota</button>
+  return (
+    <>
+      {!nota ? 'No tienes notas' : nota.map((nota, index) => {
+        return (
+          <div className="card" id='card'>
+            <div className="card-body">    
+              <h5 className="card-title">{nota.titulo}</h5>               
+              <p className="card-text">{nota.cuerpo}</p>
+              <button type="button" className="btn btn-primary" >Ver Nota</button>
             </div>
-        </div> 
-    </div>
+        </div>
+        )}
+      )}; 
+    </>
   )
 };
+
+
+
