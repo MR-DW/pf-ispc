@@ -4,12 +4,32 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import Componentes Extras
+import { BrowserRouter, Routes, Route } from 'react-router-dom';
+
+// importar Componentes Propios
+import { NavBar } from './componentes/NavBar';
+import { CrearNota } from './componentes/CrearNota/CrearNota';
+// import { ListadoDeNotas } from './componentes/TodasLasNotas/Card';
+import { VerNotaIndividual } from './componentes/VistaNota/VerNotaIndividual'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <App/>
-  </React.StrictMode>
+  <>
+    {/* NavBar */}
+      <BrowserRouter>
+        <NavBar/> {/*Siempre debe estar dentro del BrowserRouter*/}
+            <Routes>
+              {/* <Route path='/login' element={</>} /> */}
+              <Route exact path='/' element={<App/>} />
+              {/* <Route path='/ver-notas' element={<App />} /> */}
+              <Route path='/crear-nota' element={<CrearNota/>} />
+              <Route path='/personalizar-nota' element={<VerNotaIndividual/>} />
+            </Routes>
+
+      </BrowserRouter>
+  </>
 );
 
 // If you want to start measuring performance in your app, pass a function

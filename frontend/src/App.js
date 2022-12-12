@@ -1,13 +1,16 @@
 
 import './App.css';
 // Import componentes
-import { Card } from './componentes/TodasLasNotas/Card';
-import { VerNotaIndividual} from './componentes/VistaNota/nota'
+import { ListadoDeNotas } from './componentes/TodasLasNotas/MostrarNotas';
+// import { VerNotaIndividual} from './componentes/VistaNota/nota'
 import { NavBar } from './componentes/NavBar';
-import { CrearNota } from './componentes/CrearNota/CrearNota';
+// import { CrearNota } from './componentes/CrearNota/CrearNota';
+
+// import router-dom
 
 
 function App() {
+
 
   
   return (
@@ -18,11 +21,7 @@ function App() {
       
         <h1 className="titulo" >Tus Notas</h1>
 
-        <Card/>
-
-        <VerNotaIndividual/>
-
-        <CrearNota/>
+        <ListadoDeNotas/>
         
       </div>
     </>

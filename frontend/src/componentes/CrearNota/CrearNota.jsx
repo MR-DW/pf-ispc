@@ -1,4 +1,5 @@
-import React from "react";
+import React, {useState, useEffect } from "react";
+import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 
 export function CrearNota() {
 
@@ -9,41 +10,40 @@ export function CrearNota() {
   //   'cuerpo':'Aquí se desarrolla tu nota',
   //   'id_usuarios':0
   // };
-  const [nota, setNotas] = useState([]);
+  const [nuevaNota, setNuevaNota] = useState(TraerNotas.infoNota);
   // console.log(nota)
   
   // Funcion para traer notas
-  const MostrarNotas = async () => {
+  const crearNuevaNota = async () => {
     try{
-      const res = await TraerNotas.getNotas();
-      // console.log(res);
+      const res = await TraerNotas.crearNotas();
       const data = await res.json();
       console.log(data);
-      // var titulo = data.titulo;
-      // var cuerpo = data.cuerpo;
       
       // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
-      setNotas(data);
-      // setNotas({ titulo, cuerpo });
+      // setNuevaNota(data);
+      const { titulo, cuerpo } = data.nuevaNota;
+      setNuevaNota({ titulo, cuerpo });
     } catch(error){
             console.log(error);
       }
   };
-  // MostrarNotas();
 
   // useEffect
-  useEffect(() => {
-    MostrarNotas();
-  }, []);
+  // useEffect(() => {
+  //   crearNuevaNota();
+  // }, []);
 
-  // const handleChange = (e) => {
-    // setNotas({ ...nota, [e.target.name]: e.target.value });
-    // MostrarNotas();
+  const handleClick = (e) => {
+      setNuevaNota({ ...nuevaNota, [e.target.name]: e.target.value });
+      crearNuevaNota();
+  };
+  
+  
     // const card = document.getElementById('card');
   
     // card.addEventListener('load', () => {
-    //   MostrarNotas();
-    // })
+ 
 
   return (
     <>
@@ -56,7 +56,8 @@ export function CrearNota() {
             type="text"
             className="form-control"
             id="exampleFormControlInput1"
-            placeholder="Titulo"
+            placeholder="Elige tu Titulo"
+            value={nuevaNota.titulo}
           ></input>
         </div>
         <div className="mb-3">
@@ -67,13 +68,14 @@ export function CrearNota() {
             className="form-control"
             id="exampleFormControlTextarea1"
             rows="3"
-            placeholder="Desarrolla tu nota..."
+            placeholder="Desarrolla tu nota..."  
+            value={nuevaNota.cuerpo}
           ></textarea>
         </div>
-        <button type="button" className="btn btn-primary">
+        <button type="button" className="btn btn-primary"  onClick={handleClick} >
           Crear Nota
         </button>
       </div>
     </>
-  );
-}
+  )
+};

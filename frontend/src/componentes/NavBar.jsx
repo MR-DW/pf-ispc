@@ -1,11 +1,12 @@
 import React from "react";
+import { Link } from 'react-router-dom';
 
 export function NavBar() {
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          <a className="navbar-brand" href="/frontend/src/componentes/TodasLasNotas/Card.jsx">
+          <a className="navbar-brand" to='/'>
             TU BLOCK DE NOTAS
           </a>
           <button
@@ -19,15 +20,23 @@ export function NavBar() {
           >
             <span className="navbar-toggler-icon"></span>
           </button>
-          <div className="collapse navbar-collapse" id="navbarNavAltMarkup">
-            <div className="navbar-nav">
-              {/* <a className="nav-link active" aria-current="page" href="#"> */}
-                {/* Tus Notas */}
-              {/* </a> */}
-              {/* <a className="nav-link" href="#"> */}
-                {/* Crear Notas */}
-              {/* </a> */}
-            </div>
+          <div className="collapse navbar-collapse" id="navbarNav">
+            
+            <ul className="navbar-nav">
+              
+              {/* <li className="nav-link active">    
+                <Link aria-current="page" href="/personalizar-nota"> 
+                 Notas
+                </Link>
+              </li> */}
+              
+              <li className="nav-link active">
+                <Link aria-current="page" href="/crear-nota"> 
+                Nueva Nota
+                </Link>
+              </li>
+            
+            </ul> 
           </div>
         </div>
       </nav>
