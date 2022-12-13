@@ -39,9 +39,18 @@ export const crearNotas = (newNota) => {
   });
 };
 
+// API PARA TRAER UNA NOTA
+const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/custom-nota/<int:pk>/";
+
+export const getUnaNota = async () => {
+  return await fetch(URL_TRAER_UNA_NOTA);
+};
+
 // API PARA EDITAR / BORRAR UNA NOTA
 const url_customNota = "http://127.0.0.1:8000/notas/custom-nota/<int:pk>/";
 export const customNota = async () => {
   return await fetch(url_customNota);
 }
+
+
 

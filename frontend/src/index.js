@@ -4,6 +4,9 @@ import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
 
+// import Links
+// import { Link } from 'react-router-dom';
+
 // import Componentes Extras
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
@@ -14,6 +17,8 @@ import { CrearNota } from './componentes/CrearNota/CrearNota';
 import { VerNotaIndividual } from './componentes/VistaNota/VerNotaIndividual'
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
+
+
 
 root.render(
   <>
@@ -26,7 +31,7 @@ root.render(
               <Route exact path='/' element={<App/>} />
               {/* <Route path='/ver-notas' element={<App />} /> */}
               <Route path='/crear-nota' element={<CrearNota/>} />
-              <Route path='/personalizar-nota' element={<VerNotaIndividual/>} />
+              <Route path='/personalizar-nota/:id_notas' element={<VerNotaIndividual/>} />
             </Routes>
 
       </BrowserRouter>
