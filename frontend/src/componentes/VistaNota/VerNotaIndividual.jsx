@@ -14,10 +14,11 @@ export function VerNotaIndividual(){
   // Funcion para traer notas
   const MostrarUnaNota = async () => {
       try{
-        const res = await TraerNotas.getUnaNota();
+        const res = await TraerNotas.getUnaNota(verNota);
+        // console.log(res)
         const data = await res.json();
-        console.log(data)
-        
+        // console.log(data)
+        // const { id_notas, titulo, cuerpo, id_usuarios } = data.verNota;
         // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
         setVerNota(data);
       } catch(error){
@@ -28,25 +29,31 @@ export function VerNotaIndividual(){
   // useEffect
   useEffect(() => {
       MostrarUnaNota();
-  }, []);
+  });
 
   return (
     <>
       <div className="container">
-
         <div className="card">
-          <div className="card-body">
-            <h5 className="card-title">{verNota.Titulo}</h5>
-            <p className="card-text">
-              {verNota.Cuerpo}
-            </p> 
+        {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
+           return (
+           
+              <div className="card-body">
+                <h5 className="card-title">{verNota.titulo}</h5>
+                <p className="card-text">
+                {verNota.cuerpo}
+                </p> 
+              </div>
+          
+           )} 
+        )} 
+          <div className="button">
+            <button type="button" className="btn btn-primary">Modificar Nota</button>
+            <button type="button" className="btn btn-primary">Eliminar Nota</button>
           </div>
         </div>
-        <div className="button">
-          <button type="button" className="btn btn-primary">Modificar Nota</button>
-          <button type="button" className="btn btn-primary">Eliminar Nota</button>
-        </div>
       </div>
+
     </>
   );
 };

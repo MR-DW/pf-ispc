@@ -31,7 +31,7 @@ root.render(
               <Route exact path='/' element={<App/>} />
               {/* <Route path='/ver-notas' element={<App />} /> */}
               <Route path='/crear-nota' element={<CrearNota/>} />
-              <Route path='/personalizar-nota/:id_notas' element={<VerNotaIndividual/>} />
+              <Route path='/personalizar-nota/:id_notas/' element={<VerNotaIndividual />} />
             </Routes>
 
       </BrowserRouter>

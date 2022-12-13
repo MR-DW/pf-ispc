@@ -40,14 +40,28 @@ export const crearNotas = (newNota) => {
 };
 
 // API PARA TRAER UNA NOTA
-const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/custom-nota/<int:pk>/";
+const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/custom-nota/:id_notas/";
 
-export const getUnaNota = async () => {
-  return await fetch(URL_TRAER_UNA_NOTA);
+export const getUnaNota = async (unaNota) => {
+  return fetch(
+    // API_URL,
+    URL_TRAER_UNA_NOTA,
+    {method: 'PUT',
+    headers:{
+      'Content-type':'application/json'
+    },
+    // mode: 'no-cors',
+    body: JSON.stringify({
+      // id_notas: Int(newNota.id_notas),
+      titulo: String(unaNota.titulo).trim(),
+      cuerpo: String(unaNota.cuerpo).trim(),
+      // id_usuarios: Number(unaNota.id_usuarios)
+    })
+  });
 };
 
 // API PARA EDITAR / BORRAR UNA NOTA
-const url_customNota = "http://127.0.0.1:8000/notas/custom-nota/<int:pk>/";
+const url_customNota = "http://127.0.0.1:8000/notas/custom-nota/:id_notas/";
 export const customNota = async () => {
   return await fetch(url_customNota);
 }
