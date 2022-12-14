@@ -52,7 +52,7 @@ class TraerUnaNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-# Editar y Borrar Una Nota
+# Editar Una Nota
 class EditarNota(APIView):
     def put(self, request, pk, pk2):
         """Modifica una nota particular."""

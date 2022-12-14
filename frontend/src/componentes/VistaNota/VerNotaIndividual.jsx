@@ -1,4 +1,6 @@
 import React from "react";
+// IMPORT LINK
+import { Link } from "react-router-dom";
 
 // Import Servicios api rest
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
@@ -14,7 +16,7 @@ export function VerNotaIndividual(){
   // Funcion para traer notas
   const MostrarUnaNota = async () => {
       try{
-        const res = await TraerNotas.getUnaNota(verNota);
+        const res = await TraerNotas.getUnaNota();
         // console.log(res)
         const data = await res.json();
         // console.log(data)
@@ -33,26 +35,29 @@ export function VerNotaIndividual(){
 
   return (
     <>
-      <div className="container">
-        <div className="card">
-        {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
-           return (
-            <>
-              <div className="card-body" key={index}>
-                <h5 className="card-title" key={index}>{verNota.titulo}</h5>
-                <p className="card-text" key={index}>
+      {/* {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
+        return ( */}
+        <div className="container">
+          <div className="card">
+              <div className="card-body" >
+                <h5 className="card-title" >{verNota.titulo}</h5>
+                <p className="card-text" >
                 {verNota.cuerpo}
                 </p> 
               </div>
-            </>
-           )} 
-        )} 
+
           <div className="button">
-            <button type="button" className="btn btn-primary">Modificar Nota</button>
+            <button type="button" className="btn btn-primary">
+                <Link aria-current="page" to={`/editar-nota/${verNota.id_usuarios}/${verNota.id_notas}/`}> 
+                  Ver Nota
+                </Link>
+            </button>
             <button type="button" className="btn btn-primary">Eliminar Nota</button>
           </div>
         </div>
       </div>
+        {/* )}
+      )}; */}
 
     </>
   );

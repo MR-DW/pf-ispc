@@ -2,12 +2,10 @@ import React, {useState } from "react";
 // , useEffect
 import { useNavigate, useParams } from 'react-router-dom'
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
-// import * as ListadoDeNotas from '../TodasLasNotas/ListadoDeNotas'
 
 export function CrearNota() {
 
   // console.log(ListadoDeNotas.nota)
-  // useParams - useNavigate
   var history = useNavigate();
   var params = useParams();
 
@@ -17,7 +15,6 @@ export function CrearNota() {
   
   var res;
   const handleSubmit = async (e) => {
-      // console.log('A name was submitted: ' + this.state.value);
       console.log('HANDLESUBMIT:', nuevaNota);
       e.preventDefault();
    
@@ -30,9 +27,7 @@ export function CrearNota() {
           console.log('DATA:', data);
           // setNuevaNota(data);
           if (data.id_notas !== 0){
-              // console.log('No hay params iguales a los id de las notas');
               setNuevaNota(TraerNotas.infoNota);
-              // console.log('setNuevaNota:',setNuevaNota(TraerNotas.infoNota))
           }
           history('/')
         }
@@ -42,11 +37,7 @@ export function CrearNota() {
   };
 
   const handleInputChange = (e) =>{
-    // this.setNuevaNota({value: e.target.value});
     setNuevaNota({...nuevaNota, [e.target.name]: e.target.value});
-    // console.log('name:',e.target.name);
-    // console.log('value:',e.target.value);
-    // console.log('nuevaNota',nuevaNota)
   };
 
   return (
@@ -100,31 +91,3 @@ export function CrearNota() {
     </>
   )
 };
-
-
-  // console.log(nota)
-  // Funcion para guardar la nota en base de datos
-  // const crearNuevaNota = async () => {
-  //   try{
-  //     const res = await TraerNotas.crearNotas();
-  //     const data = await res.json();
-  //     console.log(data);
-  //     // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
-  //     // setNuevaNota(data);
-  //     const { titulo, cuerpo } = data.nuevaNota;
-  //     setNuevaNota({ titulo, cuerpo });
-  //   } catch(error){
-  //           console.log(error);
-  //     }
-  // };
-
-   
-  
-    // const card = document.getElementById('card');
-  
-    // card.addEventListener('load', () => {
-
-      // useEffect
-  // useEffect(() => {
-  //   crearNuevaNota();
-  // }, []);

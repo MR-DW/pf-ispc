@@ -12,9 +12,12 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // importar Componentes Propios
 import { NavBar } from './componentes/NavBar';
-import { CrearNota } from './componentes/CrearNota/CrearNota';
+
 // import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
 import { VerNotaIndividual } from './componentes/VistaNota/VerNotaIndividual'
+import { EditarNota } from './componentes/EditarNota/EditarNota';
+
+import { CrearNota } from './componentes/CrearNota/CrearNota';
 
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
@@ -29,9 +32,10 @@ root.render(
             <Routes>
               {/* <Route path='/login' element={</>} /> */}
               <Route exact path='/' element={<App/>} />
-              {/* <Route path='/ver-notas' element={<App />} /> */}
+              <Route path='/tu-nota/1/10/' element={<VerNotaIndividual />} />
+              <Route path='/editar-nota/1/10/' element={<EditarNota />} />
+              
               <Route path='/crear-nota/' element={<CrearNota/>} />
-              <Route path='/tu-nota/1/1/' element={<VerNotaIndividual />} />
             </Routes>
 
       </BrowserRouter>

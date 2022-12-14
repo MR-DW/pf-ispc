@@ -37,31 +37,46 @@ export const getNotas = async () => {
 };
 
 // API PARA TRAER UNA NOTA
-const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/1/1/";
+const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/1/10/";
 
-export const getUnaNota = async (unaNota) => {
+export const getUnaNota = async () => {
   return fetch(
     // API_URL,
-    URL_TRAER_UNA_NOTA,
-    {method: 'GET',
-    headers:{
-      'Content-type':'application/json'
-    },
+    URL_TRAER_UNA_NOTA,)
+//     {method: 'GET',
+//     headers:{
+//       'Content-type':'application/json'
+//     },
+//     // mode: 'no-cors',
+//     body: JSON.stringify({
+//       // id_notas: Int(newNota.id_notas),
+//       titulo: String(unaNota.titulo).trim(),
+//       cuerpo: String(unaNota.cuerpo).trim(),
+//       // id_usuarios: Number(unaNota.id_usuarios)
+//     })
+//   });
+};
+
+// API PARA EDITAR NOTA
+const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/1/10/";
+export const ModificarNota = async (editarNota) => {
+  return await fetch(
+    URL_EDITAR_NOTA,
+    {method: 'PUT',
+    // headers:{
+    //   'Content-type':'application/json'
+    // },
     // mode: 'no-cors',
     body: JSON.stringify({
       // id_notas: Int(newNota.id_notas),
-      titulo: String(unaNota.titulo).trim(),
-      cuerpo: String(unaNota.cuerpo).trim(),
-      id_usuarios: Number(unaNota.id_usuarios)
+      titulo: String(editarNota.titulo).trim(),
+      cuerpo: String(editarNota.cuerpo).trim(),
+      // id_usuarios: Number(Nota.id_usuarios)
     })
-  });
-};
-
-// API PARA EDITAR / BORRAR UNA NOTA
-const url_customNota = "http://127.0.0.1:8000/notas/custom-nota/:id_notas/";
-export const customNota = async () => {
-  return await fetch(url_customNota);
+  }
+    );
 }
+// VER PORQUE LA RES DEL COMPONENTE QUE CONSUME LA API EDITANOTA NO PONE EL ID_NOTA.
 
 // API PARA CREAR UNA Nota
 const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
@@ -75,7 +90,6 @@ export const crearNotas = (newNota) => {
     headers:{
       'Content-type':'application/json'
     },
-    // mode: 'no-cors',
     body: JSON.stringify({
       // id_notas: Int(newNota.id_notas),
       titulo: String(newNota.titulo).trim(),
