@@ -2,9 +2,9 @@
 # Import del modulo path
 from django.urls import path
 # Import servicios 
-from Usuarios.views import CrearUsuario
+from Usuarios.views import ( CrearUsuario, TraerUnUsuario, )
 
 urlpatterns = [
-    path('usuario/registrar-usuario/', CrearUsuario.as_view(), name='registrar-usuario'),
-    # path('usuario/registrar-usuario/', CrearUsuario.as_view(), name='registrar-usuario'),
+    path('registrar-usuario/', CrearUsuario.as_view(), name='registrar-usuario'),
+    path('tu-usuario/<int:pk>/', TraerUnUsuario.as_view(), name='trae-un-usuario'),
 ]

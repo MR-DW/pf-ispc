@@ -37,7 +37,28 @@ class CrearUsuario(APIView):
                     status=status.HTTP_400_BAD_REQUEST
         )
 
-
+class TraerUnUsuario(APIView):
+    def get(self, request, pk):
+        """Retrona una nota del listado de notas."""
+        try:
+            print('hola')
+            usuario = Usuarios.objects.get(id_usuarios = pk)
+            print('segundo hola')
+            print(usuario)
+            usuario_serializer = UsuariosSerializer(usuario)
+            print(usuario_serializer)
+            return Response(
+                data = usuario_serializer.data,
+                status=status.HTTP_200_OK
+            )
+        except:    
+            data ={
+                'mensaje':'Tu usuario no fue encontrada'
+            }
+            return Response(
+                data = data,
+                status=status.HTTP_400_BAD_REQUEST
+            )
 # @api_view(['GET', 'POST'])
 # def user_detail_view(self, request, pk):
 #         """Detallar, actualizar y eliminar un usuario."""
