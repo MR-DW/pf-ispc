@@ -1,57 +1,62 @@
 import React from "react";
-import { useRef, useState, useEffect } from "react";
+import { useState } from "react";
+
+import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
 
 export function Login() {
   // useRef
-  const usuarioRef = useRef();
-  const errRef = useRef();
+  // const usuarioRef = useRef();
+  // const errRef = useRef();
 
   //   useState
-  const [usuario, setUsuario] = useState('');
-  const [pwd, setPwd] = useState('');
-  // password, setPassword
-  const [errMsg, setErrMsg] = useState('');
+  const [usuario, setUsuario] = useState();
+  // const [pwd, setPwd] = useState('');
+  // // password, setPassword
+
   // Mensaje de erro
-  const [success, setSuccess] = useState();
-  // Exito
+  // const [errMsg, setErrMsg] = useState('');
+
+  // const [success, setSuccess] = useState();
+  // // Exito
 
   //   useEFFECT
-  useEffect(() => {
-    usuarioRef.current.focus();
-  }, []);
+  // useEffect(() => {
+  //   usuarioRef.current.focus();
+  // }, []);
 
-  useEffect(() => {
-    setErrMsg('');
-  }, [usuario, pwd]);
+  // useEffect(() => {
+  //   setErrMsg('');
+  // }, [usuario, pwd]);
 
   // logica para enviar formulario
   const handleSubmit = async (e) => {
-    console.log('ejecuta el submit');
-    // e.preventDeFault();
-    console.log(usuario, pwd);
-    // setUsuario('');
-    // setPwd('');
-    setSuccess(true);
-    // Con el setSucces le digo que la operacion fue exitosa si o si.
+    console.log("ejecuta el submit");
+    e.preventDefault();
+    try {
+      const res = await ManejarUsuarios.getUnUsuario();
+      console.log(res);
+      const data = await res.json();
+      console.log(data);
+      // const { id_notas, titulo, cuerpo, id_usuarios } = data.verNota;
+      // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
+      setUsuario(data);
+      // setSuccess();
+    } catch (error) {
+      console.log(error);
+    }
   };
+  // Con el setSucces le digo que la operacion fue exitosa si o si.
 
   return (
     <>
-      {success ? (
+      {!usuario ? (
         <section>
-          <h1>Bienvenido {usuario} a tu Block de Notas</h1>
-          {/* <p>
-            <a href="#">Ir al menu</a>
-          </p> */}
-        </section>
-      ) : (
-        <section>
-          <p
-            ref={errRef}
-            className={errMsg ? "errmsg" : "offscreen"}
-            aria-live="assertive">
-            {errMsg}
-          </p>
+          {/* <p
+           ref={errRef}
+           className={errMsg ? "errmsg" : "offscreen"}
+           aria-live="assertive">
+           {errMsg}
+         </p> */}
 
           <h1>Ingresa a tu Block de Notas</h1>
 
@@ -61,9 +66,9 @@ export function Login() {
               type="email"
               name="mail"
               id="mail"
-              ref={usuarioRef}
-              onChange={(e) => setUsuario(e.target.value)}
-              value={usuario}
+              //  ref={usuarioRef}
+              //  onChange={(e) => setUsuario(e.target.value)}
+              //  value={usuario}
               required
             />
 
@@ -72,8 +77,8 @@ export function Login() {
               type="password"
               name="password"
               id="password"
-              onChange={(e) => setPwd(e.target.value)}
-              value={pwd}
+              //  onChange={(e) => setPwd(e.target.value)}
+              //  value={usuario}
               required
             />
 
@@ -84,11 +89,16 @@ export function Login() {
           <p>
             Registrate...
             <span className="line">
-              <a href="#">
-                Aquí
-              </a>
+              <a href="#">Aquí</a>
             </span>
           </p>
+        </section>
+      ) : (
+        <section>
+          <h1>Bienvenido {usuario.nombre} {usuario.apellido} a tu Block de Notas</h1>
+          {/* <p>
+            <a href="#">Ir al menu</a>
+          </p> */}
         </section>
       )}
     </>

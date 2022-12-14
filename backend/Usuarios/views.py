@@ -38,7 +38,7 @@ class CrearUsuario(APIView):
         )
 
 class TraerUnUsuario(APIView):
-    def get(self, request, pk):
+    def post(self, request, pk):
         """Retrona una nota del listado de notas."""
         try:
             print('hola')
