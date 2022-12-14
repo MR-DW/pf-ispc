@@ -10,50 +10,34 @@ export const infoNota = [
 ];
 
 // API PARA Listar todas las notas
-const API_URL = "http://127.0.0.1:8000/notas/mostrar-notas/<int:pk>/";
+// Ver de poner un metodo map.
+// var num = [];
+// {num.map((num) => {
+  // return(
+  const URL_GET_NOTAS = `http://127.0.0.1:8000/notas/mostrar-notas/1/`;
+
+  // )}
+// )};
 
 export const getNotas = async () => {
-  return await fetch(API_URL,
+  return await fetch(URL_GET_NOTAS)
   //   // URL_CREAR_NOTAS,
-    {method: 'GET',
-    headers:{
-      'Content-type':'application/json'
-    },
-    mode: 'no-cors',
+    // {method: 'GET',
+    // headers:{
+    //   'Content-type':'application/json'
+    // },
+    // mode: 'no-cors',
   //   body: JSON.stringify({
   //     id_notas: Number(newNota.id_notas),
   //     titulo: String(newNota.titulo).trim(),
   //     cuerpo: String(newNota.cuerpo).trim(),
   //     // id_usuarios: Number(newNota.id_usuarios_id)
   //   })
-  })
-};
-
-
-// API PARA CREAR UNA Nota
-const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
-
-export const crearNotas = (newNota) => {
-
-  return fetch(
-    // API_URL,
-    URL_CREAR_NOTAS,
-    {method: 'POST',
-    headers:{
-      'Content-type':'application/json'
-    },
-    // mode: 'no-cors',
-    body: JSON.stringify({
-      // id_notas: Int(newNota.id_notas),
-      titulo: String(newNota.titulo).trim(),
-      cuerpo: String(newNota.cuerpo).trim(),
-      id_usuarios: Number(newNota.id_usuarios)
-    })
-  });
+  // }
 };
 
 // API PARA TRAER UNA NOTA
-const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/<int:pk2>/<int:pk>/";
+const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/1/1/";
 
 export const getUnaNota = async (unaNota) => {
   return fetch(
@@ -78,6 +62,28 @@ const url_customNota = "http://127.0.0.1:8000/notas/custom-nota/:id_notas/";
 export const customNota = async () => {
   return await fetch(url_customNota);
 }
+
+// API PARA CREAR UNA Nota
+const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
+
+export const crearNotas = (newNota) => {
+
+  return fetch(
+    // API_URL,
+    URL_CREAR_NOTAS,
+    {method: 'POST',
+    headers:{
+      'Content-type':'application/json'
+    },
+    // mode: 'no-cors',
+    body: JSON.stringify({
+      // id_notas: Int(newNota.id_notas),
+      titulo: String(newNota.titulo).trim(),
+      cuerpo: String(newNota.cuerpo).trim(),
+      id_usuarios: Number(newNota.id_usuarios)
+    })
+  });
+};
 
 
 

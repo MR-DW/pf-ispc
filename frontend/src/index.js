@@ -30,8 +30,8 @@ root.render(
               {/* <Route path='/login' element={</>} /> */}
               <Route exact path='/' element={<App/>} />
               {/* <Route path='/ver-notas' element={<App />} /> */}
-              <Route path='/crear-nota' element={<CrearNota/>} />
-              <Route path='/tu-nota/:id_usuarios/:id_notas/' element={<VerNotaIndividual />} />
+              <Route path='/crear-nota/' element={<CrearNota/>} />
+              <Route path='/tu-nota/1/1/' element={<VerNotaIndividual />} />
             </Routes>
 
       </BrowserRouter>
