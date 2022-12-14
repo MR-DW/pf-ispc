@@ -1,6 +1,5 @@
 from django.contrib import admin
 # Import models
-from Block_Notas.models import Usuarios
 from Block_Notas.models import Notas
 
 # Register your models here.
@@ -18,10 +17,4 @@ class NotasAdmin(admin.ModelAdmin):
     # --> Crea paginacion
     exclude = ('id_usuarios',)
     # --> Excluye el campo seleccionado, no puede editarse.
-    
-
-@admin.register(Usuarios)
-
-class UsuarioAdmin(admin.ModelAdmin):    
-    list_display = ('nombres', 'apellidos', 'id_usuarios', 'mail',)
     

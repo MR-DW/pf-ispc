@@ -37,14 +37,14 @@ export function VerNotaIndividual(){
         <div className="card">
         {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
            return (
-           
-              <div className="card-body">
-                <h5 className="card-title">{verNota.titulo}</h5>
-                <p className="card-text">
+            <>
+              <div className="card-body" key={index}>
+                <h5 className="card-title" key={index}>{verNota.titulo}</h5>
+                <p className="card-text" key={index}>
                 {verNota.cuerpo}
                 </p> 
               </div>
-          
+            </>
            )} 
         )} 
           <div className="button">

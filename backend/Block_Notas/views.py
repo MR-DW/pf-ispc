@@ -7,49 +7,20 @@ from rest_framework import status
 
 # Models imports
 from Block_Notas.models import Notas
-from Block_Notas.models import Usuarios
+from Usuarios.models import Usuarios
 
 # Import Serializer
 from Block_Notas.serializers import NotasSerializers
-from Block_Notas.serializers import UsuariosSerializers
-
-
-
-# Create your views here.
-
-# METODO GET PARA EL USUARIO.
-class UsuariosApiView(APIView):
-    def get(self, request, pk):
-        """Retrona listado de usuarios"""
-        try:
-                usuarios = Usuarios.objects.get(id_usuarios = pk)
-              
-                usuarios_serializer = UsuariosSerializers(usuarios)
-
-                data = {'Mensaje':f'Bienvenido {usuarios.nombres} {usuarios.apellidos}'}
-                
-                return Response(
-                    data = data,
-                    status = status.HTTP_200_OK
-                )
-        except:
-                data ={
-                'mensaje':'Usuario inexistente'
-                }
-                return Response(
-                    data = data,
-                    status=status.HTTP_400_BAD_REQUEST
-                )
-
 
 # Create your views here.   
 # METODOS PARA NOTAS
 # Mostrar Todas Las Notas
 class MostrarNotas(APIView):
-    def get(self, request):
+    def get(self, request, pk):
         """Retrona listado de las notas creadas"""
 
-        notas = Notas.objects.all()
+        # usuario = Usuarios.objects.get(id_usuarios = pk)
+        notas = Notas.objects.filter(id_usuarios_id = pk)
 
         notas_serializer = NotasSerializers(notas, many=True)
         
@@ -60,12 +31,14 @@ class MostrarNotas(APIView):
 
 # Mostrar Una Las Notas
 class TraerUnaNota(APIView):
-    def get(self, request, pk):
+    def get(self, request, pk2, pk):
+        #  pk2,
         """Retrona una nota del listado de notas."""
         try:
-            nota = Notas.objects.get(id_notas = pk)
+            nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
+          
             custom_nota_serializer =  NotasSerializers(nota)
-            # print(custom_nota_serializer.value())
+            print(nota)
             return Response(
                 data = custom_nota_serializer.data,
                 status=status.HTTP_200_OK
@@ -80,11 +53,11 @@ class TraerUnaNota(APIView):
             )
 
 # Editar y Borrar Una Nota
-class EditarBorrarNota(APIView):
-    def put(self, request, pk):
+class EditarNota(APIView):
+    def put(self, request, pk, pk2):
         """Modifica una nota particular."""
         try:
-            nota = Notas.objects.get(id_notas = pk)
+            nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
             custom_nota_serializer =  NotasSerializers(nota, data = request.data)
             # print(custom_nota_serializer.value())
             if custom_nota_serializer.is_valid():
@@ -102,10 +75,11 @@ class EditarBorrarNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
-    def delete(self, request, pk):
+class BorrarNota(APIView):
+    def delete(self, request, pk2, pk):
         """Elimina una nota particular."""
         try:
-            nota = Notas.objects.get(id_notas = pk)
+            nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
             nota.delete()
             data = {
                 'mensaje':'Tu nota ha sido eliminada correctamente',
