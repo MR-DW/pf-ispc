@@ -14,7 +14,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 import { NavBar } from './componentes/NavBar';
 
 // import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
-import { VerNotaIndividual } from './componentes/VistaNota/VerNotaIndividual'
+import { TuNota } from './componentes/TuNota/TuNota'
 import { EditarNota } from './componentes/EditarNota/EditarNota';
 
 import { CrearNota } from './componentes/CrearNota/CrearNota';
@@ -32,8 +32,8 @@ root.render(
             <Routes>
               {/* <Route path='/login' element={</>} /> */}
               <Route exact path='/' element={<App/>} />
-              <Route path='/tu-nota/1/10/' element={<VerNotaIndividual />} />
-              <Route path='/editar-nota/1/10/' element={<EditarNota />} />
+              <Route path='/tu-nota/1/12/' element={<TuNota />} />
+              <Route path='/editar-nota/1/12/' element={<EditarNota />} />
               
               <Route path='/crear-nota/' element={<CrearNota/>} />
             </Routes>

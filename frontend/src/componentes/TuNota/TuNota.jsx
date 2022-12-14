@@ -4,11 +4,13 @@ import { Link } from "react-router-dom";
 
 // Import Servicios api rest
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
+// IMPORT COMPONENTE BORRAR NOTA
+import { BorrarNota } from '../BorrarNota/BorrarNota'
 
 // Import useState, useEffect
 import { useState, useEffect } from "react";
 
-export function VerNotaIndividual(){
+export function TuNota(){
  
   // useState
   const [verNota, setVerNota] = useState([]);
@@ -52,7 +54,7 @@ export function VerNotaIndividual(){
                   Ver Nota
                 </Link>
             </button>
-            <button type="button" className="btn btn-primary">Eliminar Nota</button>
+            <BorrarNota />
           </div>
         </div>
       </div>
