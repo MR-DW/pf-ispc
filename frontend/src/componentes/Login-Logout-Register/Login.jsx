@@ -2,6 +2,7 @@ import React from "react";
 import { useState } from "react";
 
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
+import { RegistrarUsuario } from "./RegistrarUsuario";
 
 export function Login() {
   // useRef
@@ -89,10 +90,11 @@ export function Login() {
           <p>
             Registrate...
             <span className="line">
-              <a href="#">Aquí</a>
+              {/* <a href="#">Aquí</a> */}
             </span>
           </p>
         </section>
+          
       ) : (
         <section>
           <h1>Bienvenido {usuario.nombre} {usuario.apellido} a tu Block de Notas</h1>
@@ -101,6 +103,7 @@ export function Login() {
           </p> */}
         </section>
       )}
+      <RegistrarUsuario />
     </>
   );
 }
