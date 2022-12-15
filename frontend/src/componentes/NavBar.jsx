@@ -1,13 +1,23 @@
 import React from "react";
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 export function NavBar() {
+
+  const { id_usuarios } = useParams();
+  console.log(id_usuarios)
+
   return (
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
           {/* <a className="navbar-brand" href='/'></a> */}
-          <p className="nombrePag">TU BLOCK DE NOTAS</p>
+           
+          <li className="nav-link active">
+            <Link aria-current="page" to={`/${id_usuarios}/`}> 
+                <p className="nombrePag">TU BLOCK DE NOTAS</p>
+            </Link>
+          </li>
+    
           <button
             className="navbar-toggler"
             type="button"
@@ -24,25 +34,25 @@ export function NavBar() {
             <ul className="navbar-nav">
               
               <li className="nav-link active">
-                <Link aria-current="page" to="/login"> 
+                <Link aria-current="page" to="/"> 
                 Iniciar Sesion
                 </Link>
               </li>
 
               <li className="nav-link active">    
-                <Link aria-current="page" to="/:id_usuarios"> 
+                <Link aria-current="page" to={`/notas/mostrar-notas/${id_usuarios}/`}> 
                   Mis Notas
                 </Link>
               </li>
               
               <li className="nav-link active">
-                <Link aria-current="page" to="/crear-nota"> 
+                <Link aria-current="page" to="/notas/crear-nota/"> 
                 Nueva Nota
                 </Link>
               </li>
               
               <li className="nav-link active">
-                <Link aria-current="page" to="/login"> 
+                <Link aria-current="page" to="/"> 
                 Cerrar Sesion
                 </Link>
               </li>

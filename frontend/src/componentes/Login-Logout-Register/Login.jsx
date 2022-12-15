@@ -5,7 +5,6 @@ import { Link } from "react-router-dom";
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
 
 export function Login() {
-
   //   useState
   const [usuario, setUsuario] = useState();
 
@@ -58,7 +57,7 @@ export function Login() {
 
           {/* Link para registrarse */}
           <button>
-                <Link aria-current="page" to={`/registrar-usuario`}> 
+                <Link aria-current="page" to={`/usuario/registrar-usuario/`}> 
                   Registrarse...
                 </Link>
           </button>
@@ -91,8 +90,8 @@ export function Login() {
           7 - Crear una nota: Esta pantalla cuenta con su propio link en la barra de navegación, la misma te permite crear una nueva nota, introduciendo su título y cuerpo de la nota.
           </p>
           <button className="nav-link active">    
-                <Link aria-current="page" to="/"> 
-                  Comenzar...
+                <Link aria-current="page" to={`/notas/mostrar-notas/${usuario.id_usuarios}/`}> 
+                  Ver Nota
                 </Link>
           </button>
               

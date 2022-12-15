@@ -1,3 +1,18 @@
+
+export const usuarioInfo = [
+  {
+  'password': 'password',
+  'id_usuarios': 0,
+  'username': 'username',
+  'email': 'email@email.com',
+  'nombre': 'nombre',        
+  'apellido': 'apellido',
+  'last_login': null,
+  'is_superuser': false
+  },
+];
+
+
 // Traer 1 usuario
 const URL_TRAER_UN_USUARIO = "http://127.0.0.1:8000/usuario/tu-usuario/2/";
 
@@ -24,35 +39,23 @@ export const getUnUsuario = async () => {
 // API PARA CREAR UN USUARIO
 const URL_CREAR_NOTAS = "http://127.0.0.1:8000/usuario/registrar-usuario/";
 
-export const usuarioInfo = [{
-    'password': 'password',
-    'id_usuarios': 0,
-    'username': 'username',
-    'email': 'email@email.com',
-    'nombre': 'nombre',        
-    'apellido': 'apellido',
-    'last_login': null,
-    'is_superuser': false
-}];
-
-
 export const crearUsuario = (newUsuario) => {
   
     return fetch(
     URL_CREAR_NOTAS,
     {method: 'POST',
     headers:{
-      'Content-type':'application/json'
+      'Content-Type': 'application/json'
     },
-    body: JSON.stringify({
-        password: String(newUsuario.password).trim(),
-        id_usuarios: Number(newUsuario.id_usuarios_id),
-        username: String(newUsuario.username).trim(),
-        email: String(newUsuario.email).trim(),
-        nombre: String(newUsuario.nombre).trim(),        
-        apellido: String(newUsuario.apellido).trim(),
-        last_login: Date(newUsuario.last_login),
-        is_superuser: Boolean(newUsuario.is_superuser)
-    })
+    body:JSON.stringify({
+        "password": String(newUsuario.password).trim(),
+        // id_usuarios: Number(newUsuario.id_usuarios_id),
+        "username": String(newUsuario.username).trim(),
+        "email": String(newUsuario.email).trim(),
+        "nombre": String(newUsuario.nombre).trim(),        
+        "apellido": String(newUsuario.apellido).trim(),
+        "last_login": Date(newUsuario.last_login),
+        "is_superuser": Boolean(newUsuario.is_superuser)
+    }),
   });
 };

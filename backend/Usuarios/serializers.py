@@ -8,6 +8,7 @@ from Usuarios.models import Usuarios
 
 # Serializers
 class UsuariosSerializer(serializers.ModelSerializer):
+    
     class Meta:
         model = Usuarios
         fields = '__all__'

@@ -4,11 +4,16 @@ import { Link } from "react-router-dom";
 
 // Import Servicios api rest
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
+
+// Import componente barra de navegacion
+import { NavBar } from '../NavBar';
+
 // IMPORT COMPONENTE BORRAR NOTA
 import { BorrarNota } from '../BorrarNota/BorrarNota'
 
 // Import useState, useEffect
 import { useState, useEffect } from "react";
+
 
 // Import useParams
 import { useParams } from "react-router-dom";
@@ -16,20 +21,25 @@ import { useParams } from "react-router-dom";
 export function TuNota(){
  
   // useParams
-  let { id_usuarios } = useParams();
-  // console.log(id_usuarios)
+  const { id_usuarios, id_notas } = useParams();
+  console.log(id_usuarios, id_notas);
+  console.log(useParams());
 
   // useState
   const [verNota, setVerNota] = useState([]);
-    
+
   // Funcion para traer notas
   const MostrarUnaNota = async () => {
-      try{
-        const res = await TraerNotas.getUnaNota();
+ 
+    try{
+        const res = await TraerNotas.getUnaNota({ id_usuarios, id_notas });
         const data = await res.json();
-        console.log(data)
+        console.log('DATA:', data)
         // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
         setVerNota(data);
+        // console.log(params.id_usuarios);
+        
+        // console.log(verNota.id_usuarios)
       } catch(error){
               console.log(error);
         }
@@ -38,13 +48,12 @@ export function TuNota(){
   // useEffect
   useEffect(() => {
       MostrarUnaNota();
-  });
+  },[]);
 
   return (
     <>
-      {/* {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
-        return ( */}
-        <div className="container" key={verNota.id_notas}>
+      <NavBar />
+      <div className="container" key={verNota.id_notas}>
           <div className="card">
               <div className="card-body" >
                 <h5 className="card-title" >{verNota.titulo}</h5>
@@ -52,20 +61,17 @@ export function TuNota(){
                 {verNota.cuerpo}
                 </p> 
               </div>
+          </div>
 
           <div className="button">
             <button type="button" className="btn btn-primary">
-                <Link aria-current="page" to={`/editar-nota/${verNota.id_usuarios}/${verNota.id_notas}/`}> 
-                  Ver Nota
+                <Link aria-current="page" to={`/notas/editar-nota/${verNota.id_usuarios_id}/${verNota.id_notas}/`}> 
+                  Editar...
                 </Link>
             </button>
             <BorrarNota />
           </div>
-        </div>
       </div>
-        {/* )}
-      )}; */}
-
     </>
   );
 };

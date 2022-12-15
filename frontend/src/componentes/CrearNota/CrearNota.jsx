@@ -2,6 +2,8 @@ import React, {useState } from "react";
 // , useEffect
 import { useNavigate, useParams } from 'react-router-dom'
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
+// Import barra de navegación
+import { NavBar } from "../NavBar";
 
 export function CrearNota() {
 
@@ -42,6 +44,7 @@ export function CrearNota() {
 
   return (
     <>
+      <NavBar/>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">

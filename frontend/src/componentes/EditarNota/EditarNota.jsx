@@ -1,15 +1,20 @@
 import React, {useState } from "react";
 // , useEffect
 import { useNavigate, useParams } from 'react-router-dom'
+// Import de server 
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
-// import * as ListadoDeNotas from '../TodasLasNotas/ListadoDeNotas'
-
+// Import de barra de navegacion
+import { NavBar } from "../NavBar";
 
 // VER PORQUE NO FUNCIONA 
 export function EditarNota() {
 
+  // useNavigate
   var history = useNavigate();
-  var params = useParams();
+  // useParams para ruta dinamica
+  const { id_usuarios, id_notas } = useParams();
+  console.log(id_usuarios, id_notas);
+  console.log(useParams());
 
    // useState
   const [editarNota, setEditarNota] = useState([]);
@@ -20,8 +25,8 @@ export function EditarNota() {
       e.preventDefault();
    
       try {
-        if(!params.id_notas){
-          res = await TraerNotas.ModificarNota(editarNota);
+        if(id_notas === editarNota.id_notas){
+          res = await TraerNotas.ModificarNota({ id_usuarios, id_notas });
           const data = await res.json(); 
           console.log('DATA:', data);
           // setNuevaNota(data);
@@ -48,6 +53,7 @@ export function EditarNota() {
 
   return (
     <>
+      <NavBar/>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -76,22 +82,9 @@ export function EditarNota() {
             value={editarNota.cuerpo}
             onChange = {handleInputChange}
           ></textarea>
-          {/* <label htmlFor="exampleFormControlTextarea1" className="form-label">
-            Identificador de Usuario
-          </label>
-          <input
-            type="number"
-            className="form-control"
-            id="exampleFormControlTextarea1"
-            rows="3"
-            placeholder="Introduce tu número de ID de usuario..."  
-            name="id_usuarios"
-            value={editarNota.id_usuarios}
-            onChange = {handleInputChange}
-          ></input> */}
         </div>
         <button type="submit" className="btn btn-primary" >
-          Editar Nota
+          Guardar Cambios...
         </button>
       </form>
     </>

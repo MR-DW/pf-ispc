@@ -11,7 +11,6 @@ import reportWebVitals from './reportWebVitals';
 import { BrowserRouter, Routes, Route } from 'react-router-dom';
 
 // importar Componentes Propios
-import { NavBar } from './componentes/NavBar';
 import { Login } from './componentes/Login-Logout-Register/Login';
 import { RegistrarUsuario } from './componentes/Login-Logout-Register/RegistrarUsuario';
 // import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
@@ -20,25 +19,33 @@ import { EditarNota } from './componentes/EditarNota/EditarNota';
 
 import { CrearNota } from './componentes/CrearNota/CrearNota';
 
+// import de los estados iniciales para probar enlaaces dinamicos
+// import * as TraerNotas from './ServiciosApi/TraerNotas';
+// import * as ManejarUsuarios from "./ServiciosApi/ManejarUsuarios";
+// import * as ListadoDeNotas from './componentes/TodasLasNotas/ListadoDeNotas'
+
 const root = ReactDOM.createRoot(document.getElementById('root'));
-
-
+  // console.log(ListadoDeNotas.nota.id_usuarios_id)
 
 root.render(
   <>
     {/* NavBar */}
       <BrowserRouter>
-        <NavBar/> 
+        
+        
         {/* Siempre debe estar dentro del BrowserRouter */}
             <Routes>
-              <Route path='/login' element={<Login/>} />
-              <Route path='/registrar-usuario' element={<RegistrarUsuario />} />
+              <Route exact path='/' element={<Login/>} />
               
-              <Route exact path='/:id_usuarios' element={<App/>} />
-              <Route path='/tu-nota/:id_usuarios/:id_notas' element={<TuNota />} />
-              <Route path='/editar-nota/:id_usuarios/:id_notas' element={<EditarNota />} />
+              <Route path='/usuario/registrar-usuario/' element={<RegistrarUsuario />} />
+
+              <Route  path='/notas/mostrar-notas/:id_usuarios/' element={<App/>} />
               
-              <Route path='/crear-nota' element={<CrearNota/>} />
+              <Route path='/notas/tu-nota/:id_usuarios/:id_notas/' element={<TuNota />} />
+              
+              <Route path='/notas/editar-nota/:id_usuarios/:id_notas/' element={<EditarNota />} />
+              
+              <Route path='/notas/crear-nota/' element={<CrearNota/>} />
             </Routes>
 
       </BrowserRouter>

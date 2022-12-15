@@ -16,28 +16,28 @@ from Usuarios.models import Usuarios
 
 # CREAR UN USUARIO
 class CrearUsuario(APIView):
+
     def post(self, request):
         """Crear un usuario"""
 
         usuario_serializer = UsuariosSerializer(data = request.data)
-
+        print(usuario_serializer)
         # Validación
         if usuario_serializer.is_valid():
+            usuario_serializer.save()
 
-            # User
-                usuario_serializer.save()
-
-                data = {
-                    'mensaje': 'Tu Usuario fue reado correctamente.'
-                }
-                return Response(
+            data = {
+                'mensaje': 'Tu Usuario fue reado correctamente.'
+            }
+            
+            return Response(
                     data = data, 
                     status=status.HTTP_201_CREATED
-                )
+            )
            
         return Response(
-                    data = UsuariosSerializer.errors,
-                    status=status.HTTP_400_BAD_REQUEST
+            data = UsuariosSerializer.errors,
+            status=status.HTTP_400_BAD_REQUEST
         )
 
 

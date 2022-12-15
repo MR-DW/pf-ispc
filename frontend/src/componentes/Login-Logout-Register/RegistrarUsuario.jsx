@@ -8,14 +8,16 @@ export function RegistrarUsuario() {
   // console.log(ListadoDeNotas.nota)
   var history = useNavigate();
   var params = useParams();
+  console.log('params:',params)
+  console.log('useParams:',useParams())
 
    // useState
   const [nuevoUsuario, setNuevoUsuario] = useState(ManejarUsuarios.usuarioInfo);
-
+  console.log('usuarioinfo:',ManejarUsuarios.usuarioInfo);
+  console.log('nuevoUsuario',nuevoUsuario);
   
   var res;
   const handleSubmit = async (e) => {
-    //   console.log('HANDLESUBMIT:', nuevoUsuario);
       e.preventDefault();
    
       try {
@@ -23,8 +25,9 @@ export function RegistrarUsuario() {
         //   console.log('Entra en params.id_notas NO EXISTE');
           res = await ManejarUsuarios.crearUsuario(nuevoUsuario);
           console.log('RES:', res);
+          // const data = await res.json();
           const data = await res.json(); 
-          console.log('DATA:', data);
+          // console.log('DATA:', data);
           // setNuevaNota(data);
           if (data.id_usuarios !== 0){
             setNuevoUsuario(ManejarUsuarios.usuarioInfo);
@@ -37,7 +40,7 @@ export function RegistrarUsuario() {
   };
 
   const handleInputChange = (e) =>{
-    setNuevoUsuario({...nuevoUsuario, [e.target.name]: e.target.value});
+    setNuevoUsuario({ ...nuevoUsuario, [e.target.name]: e.target.value});
   };
 
   return (
@@ -113,4 +116,4 @@ export function RegistrarUsuario() {
       </form>
     </>
   )
-}
+};

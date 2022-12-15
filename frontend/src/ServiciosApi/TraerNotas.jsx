@@ -10,68 +10,36 @@ export const infoNota = [
 ];
 
 // API PARA Listar todas las notas
-// Ver de poner un metodo map.
-// var num = [];
-// {num.map((num) => {
-  // return(
-  const URL_GET_NOTAS = `http://127.0.0.1:8000/notas/mostrar-notas/2/`;
+  const URL_GET_NOTAS = 'http://127.0.0.1:8000/notas/mostrar-notas/';
 
-  // )}
-// )};
 
-export const getNotas = async () => {
-  return await fetch(URL_GET_NOTAS)
-  //   // URL_CREAR_NOTAS,
-    // {method: 'GET',
-    // headers:{
-    //   'Content-type':'application/json'
-    // },
-    // mode: 'no-cors',
-  //   body: JSON.stringify({
-  //     id_notas: Number(newNota.id_notas),
-  //     titulo: String(newNota.titulo).trim(),
-  //     cuerpo: String(newNota.cuerpo).trim(),
-  //     // id_usuarios: Number(newNota.id_usuarios_id)
-  //   })
-  // }
+export const getNotas = async ({ id_usuarios }) => {
+  return await fetch(
+    `${URL_GET_NOTAS}${id_usuarios}/`)
 };
 
 // API PARA TRAER UNA NOTA
-const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/2/8/";
+export const URL_TRAER_UNA_NOTA = "http://127.0.0.1:8000/notas/tu-nota/";
 
-export const getUnaNota = async () => {
-  return fetch(
-    // API_URL,
-    URL_TRAER_UNA_NOTA,)
-//     {method: 'GET',
-//     headers:{
-//       'Content-type':'application/json'
-//     },
-//     // mode: 'no-cors',
-//     body: JSON.stringify({
-//       // id_notas: Int(newNota.id_notas),
-//       titulo: String(unaNota.titulo).trim(),
-//       cuerpo: String(unaNota.cuerpo).trim(),
-//       // id_usuarios: Number(unaNota.id_usuarios)
-//     })
-//   });
+export const getUnaNota = async ({ id_usuarios, id_notas }) => {
+  return await fetch(
+    `${URL_TRAER_UNA_NOTA}${id_usuarios}/${id_notas}/`,
+    {method: 'GET',
+    headers:{
+      'Content-type':'application/json'
+    },
+  });
 };
 
 // API PARA EDITAR NOTA
-const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/<int:pk2>/<int:pk>/";
-export const ModificarNota = async (editarNota) => {
+const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/";
+export const ModificarNota = async ({ id_usuarios, id_notas }) => {
   return await fetch(
-    URL_EDITAR_NOTA,
+    `${URL_EDITAR_NOTA}${id_usuarios}/${id_notas}/`,
     {method: 'PUT',
-    // headers:{
-    //   'Content-type':'application/json'
-    // },
-    // mode: 'no-cors',
     body: JSON.stringify({
-      // id_notas: Int(newNota.id_notas),
-      titulo: String(editarNota.titulo).trim(),
-      cuerpo: String(editarNota.cuerpo).trim(),
-      // id_usuarios: Number(Nota.id_usuarios)
+      titulo: String(id_notas.titulo).trim(),
+      cuerpo: String(id_notas.cuerpo).trim(),
     })
   }
     );
@@ -79,23 +47,23 @@ export const ModificarNota = async (editarNota) => {
 // VER PORQUE LA RES DEL COMPONENTE QUE CONSUME LA API EDITANOTA NO PONE EL ID_NOTA.
 
 // API PARA BORRAR UNA NOTA
-const URL_BORRAR_NOTA = "http://127.0.0.1:8000/notas/borrar-nota/<int:pk2>/<int:pk>/";
+const URL_BORRAR_NOTA = "http://127.0.0.1:8000/notas/borrar-nota/";
 
-export const EliminarNota = async () => {
+export const EliminarNota = async ({ id_usuarios, id_notas }) => {
   return fetch(
     // API_URL,
-    URL_BORRAR_NOTA,
+    `${URL_BORRAR_NOTA}${id_usuarios}/${id_notas}/`,
     {method: 'DELETE',
-//     headers:{
-//       'Content-type':'application/json'
-//     },
-//     // mode: 'no-cors',
-//     body: JSON.stringify({
-//       // id_notas: Int(newNota.id_notas),
-//       titulo: String(unaNota.titulo).trim(),
-//       cuerpo: String(unaNota.cuerpo).trim(),
-//       // id_usuarios: Number(unaNota.id_usuarios)
-//     })
+    headers:{
+      'Content-type':'application/json'
+    },
+    // mode: 'no-cors',
+    body: JSON.stringify({
+      id_notas: Number(id_notas.id_notas),
+      titulo: String(id_notas.titulo).trim(),
+      cuerpo: String(id_notas.cuerpo).trim(),
+      id_usuarios: Number(id_notas.id_usuarios)
+    })
   })
 };
 // VER PORQUE EL COMPONENTE QUE CONSUME LA API NO BORRA LA NOTA.
