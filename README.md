@@ -42,6 +42,7 @@ pytz                2022.6
 setuptools          65.5.0
 sqlparse            0.4.3
 tzdata              2022.7
+
 asgiref==3.5.2
 Django==4.1.3
 django-cors-headers==3.13.0
