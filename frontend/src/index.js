@@ -34,9 +34,9 @@ root.render(
               <Route path='/login' element={<Login/>} />
               <Route path='/registrar-usuario' element={<RegistrarUsuario />} />
               
-              <Route exact path='/' element={<App/>} />
-              <Route path='/tu-nota/1/12' element={<TuNota />} />
-              <Route path='/editar-nota/1/12' element={<EditarNota />} />
+              <Route exact path='/:id_usuarios' element={<App/>} />
+              <Route path='/tu-nota/:id_usuarios/:id_notas' element={<TuNota />} />
+              <Route path='/editar-nota/:id_usuarios/:id_notas' element={<EditarNota />} />
               
               <Route path='/crear-nota' element={<CrearNota/>} />
             </Routes>

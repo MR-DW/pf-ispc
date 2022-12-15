@@ -3,32 +3,11 @@ import { useState } from "react";
 import { Link } from "react-router-dom";
 
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
-// import { RegistrarUsuario } from "./RegistrarUsuario";
 
 export function Login() {
-  // useRef
-  // const usuarioRef = useRef();
-  // const errRef = useRef();
 
   //   useState
   const [usuario, setUsuario] = useState();
-  // const [pwd, setPwd] = useState('');
-  // // password, setPassword
-
-  // Mensaje de erro
-  // const [errMsg, setErrMsg] = useState('');
-
-  // const [success, setSuccess] = useState();
-  // // Exito
-
-  //   useEFFECT
-  // useEffect(() => {
-  //   usuarioRef.current.focus();
-  // }, []);
-
-  // useEffect(() => {
-  //   setErrMsg('');
-  // }, [usuario, pwd]);
 
   // logica para enviar formulario
   const handleSubmit = async (e) => {
@@ -54,12 +33,6 @@ export function Login() {
     
       {!usuario ? (
         <section>
-          {/* <p
-           ref={errRef}
-           className={errMsg ? "errmsg" : "offscreen"}
-           aria-live="assertive">
-           {errMsg}
-         </p> */}
 
           <h1>Ingresa a tu Block de Notas</h1>
 
@@ -69,9 +42,6 @@ export function Login() {
               type="email"
               name="mail"
               id="mail"
-              //  ref={usuarioRef}
-              //  onChange={(e) => setUsuario(e.target.value)}
-              //  value={usuario}
               required
             />
 
@@ -80,8 +50,6 @@ export function Login() {
               type="password"
               name="password"
               id="password"
-              //  onChange={(e) => setPwd(e.target.value)}
-              //  value={usuario}
               required
             />
 
@@ -96,9 +64,6 @@ export function Login() {
           </button>
             
         </section>
-        
-        
-          
       ) : (
         <section>
           <h1>Bienvenido {usuario.nombre} {usuario.apellido} a tu Block de Notas</h1>
@@ -125,6 +90,12 @@ export function Login() {
           <br></br>
           7 - Crear una nota: Esta pantalla cuenta con su propio link en la barra de navegación, la misma te permite crear una nueva nota, introduciendo su título y cuerpo de la nota.
           </p>
+          <button className="nav-link active">    
+                <Link aria-current="page" to="/"> 
+                  Comenzar...
+                </Link>
+          </button>
+              
         </section>
       )}
       

@@ -10,8 +10,15 @@ import { BorrarNota } from '../BorrarNota/BorrarNota'
 // Import useState, useEffect
 import { useState, useEffect } from "react";
 
+// Import useParams
+import { useParams } from "react-router-dom";
+
 export function TuNota(){
  
+  // useParams
+  let { id_usuarios } = useParams();
+  // console.log(id_usuarios)
+
   // useState
   const [verNota, setVerNota] = useState([]);
     
@@ -19,10 +26,8 @@ export function TuNota(){
   const MostrarUnaNota = async () => {
       try{
         const res = await TraerNotas.getUnaNota();
-        // console.log(res)
         const data = await res.json();
-        // console.log(data)
-        // const { id_notas, titulo, cuerpo, id_usuarios } = data.verNota;
+        console.log(data)
         // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
         setVerNota(data);
       } catch(error){
@@ -39,7 +44,7 @@ export function TuNota(){
     <>
       {/* {!verNota ? 'No se encuentra tu nota' : verNota.map((verNota, index) => {
         return ( */}
-        <div className="container">
+        <div className="container" key={verNota.id_notas}>
           <div className="card">
               <div className="card-body" >
                 <h5 className="card-title" >{verNota.titulo}</h5>

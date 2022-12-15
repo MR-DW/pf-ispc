@@ -10,6 +10,9 @@ from Usuarios.serializers import UsuariosSerializer
 # Models imports
 from Usuarios.models import Usuarios
 
+# # Import de funcion login
+# from django.contrib.auth.decorators import login_required
+
 
 # CREAR UN USUARIO
 class CrearUsuario(APIView):
@@ -37,14 +40,12 @@ class CrearUsuario(APIView):
                     status=status.HTTP_400_BAD_REQUEST
         )
 
+
 class TraerUnUsuario(APIView):
     def post(self, request, pk):
         """Retrona una nota del listado de notas."""
         try:
-            print('hola')
             usuario = Usuarios.objects.get(id_usuarios = pk)
-            print('segundo hola')
-            print(usuario)
             usuario_serializer = UsuariosSerializer(usuario)
             print(usuario_serializer)
             return Response(
@@ -59,42 +60,3 @@ class TraerUnUsuario(APIView):
                 data = data,
                 status=status.HTTP_400_BAD_REQUEST
             )
-# @api_view(['GET', 'POST'])
-# def user_detail_view(self, request, pk):
-#         """Detallar, actualizar y eliminar un usuario."""
-
-#     # Validacion
-#         try:
-#             usuario = Usuarios.objects.get(id_usuarios = pk)
-
-#         except:
-#             return Response(
-#                 {'message': 'Usuario no encontrado'},
-#                 status=status.HTTP_400_BAD_REQUEST
-#             )
-
-#         # Detail
-#         if request.method == 'GET':
-#             user_serializer = UsuariosSerializer(usuario)
-
-#             return Response(user_serializer.data)
-
-#         # Update 
-#         elif request.method == 'PUT':
-#             user_serializer = UsuariosSerializer(usuario, data=request.data)
-
-#             if user_serializer.is_valid():
-#                 user_serializer.save()
-
-#                 return Response(data=user_serializer.data)
-
-#             return Response(user_serializer.errors, status=status.HTTP_400_BAD_REQUEST)
-        
-#         # Delete
-#         elif request.method == 'DELETE':
-#             usuario.delete()
-
-#             return Response(
-#                 {'message': 'Usuario eliminado correctamente'},
-#                 status=status.HTTP_200_OK
-#             )

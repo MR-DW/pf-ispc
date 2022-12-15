@@ -7,14 +7,19 @@ from rest_framework import status
 
 # Models imports
 from Block_Notas.models import Notas
-from Usuarios.models import Usuarios
+# from Usuarios.models import Usuarios
 
 # Import Serializer
 from Block_Notas.serializers import NotasSerializers
+# # Import de funcion login
+# from django.contrib.auth.decorators import login_required
+# # Import de funcion logout
+# from django.contrib.auth import logout
 
 # Create your views here.   
 # METODOS PARA NOTAS
 # Mostrar Todas Las Notas
+# @login_required
 class MostrarNotas(APIView):
     def get(self, request, pk):
         """Retrona listado de las notas creadas"""
@@ -29,7 +34,8 @@ class MostrarNotas(APIView):
            status=status.HTTP_200_OK
         )
 
-# Mostrar Una Las Notas
+# Mostrar Una Nota
+# @login_required
 class TraerUnaNota(APIView):
     def get(self, request, pk2, pk):
         #  pk2,
@@ -53,6 +59,7 @@ class TraerUnaNota(APIView):
             )
 
 # Editar Una Nota
+# @login_required
 class EditarNota(APIView):
     def put(self, request, pk, pk2):
         """Modifica una nota particular."""
@@ -75,6 +82,8 @@ class EditarNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+# Borrar una Nota
+# @login_required
 class BorrarNota(APIView):
     def delete(self, request, pk2, pk):
         """Elimina una nota particular."""

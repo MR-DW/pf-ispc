@@ -5,8 +5,13 @@ import { useEffect, useState } from 'react';
 
 // import link para dirigirme a una nota especifica. y poder editarla.
 import { Link } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 
 export function ListadoDeNotas(){
+
+  // useParams
+  const params = useParams();
 
   // useState
   const [nota, setNotas] = useState([]);
@@ -33,11 +38,11 @@ export function ListadoDeNotas(){
 
   return (
     <>
-      {!nota ? 'No tienes notas' : nota.map((nota, index) => {
+      {!nota ? 'No tienes notas' : nota.map((nota) => {
         return (
-          <div className="card" id='card' key={index}>
+          <div className="card" id='card' key={nota.id_notas}>
             <div className="card-body">    
-              <h5 className="card-title">{nota.titulo}</h5>               
+              <h5 className="card-title">{nota.titulo} {params.id_usuarios}</h5>               
               <p className="card-text">{nota.cuerpo}</p>
               <button type="button" className="btn btn-primary" >
                 <Link aria-current="page" to={`/tu-nota/${nota.id_usuarios}/${nota.id_notas}/`}> 

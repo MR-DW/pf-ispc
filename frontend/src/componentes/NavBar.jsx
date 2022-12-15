@@ -23,8 +23,14 @@ export function NavBar() {
            
             <ul className="navbar-nav">
               
+              <li className="nav-link active">
+                <Link aria-current="page" to="/login"> 
+                Iniciar Sesion
+                </Link>
+              </li>
+
               <li className="nav-link active">    
-                <Link aria-current="page" to="/"> 
+                <Link aria-current="page" to="/:id_usuarios"> 
                   Mis Notas
                 </Link>
               </li>
@@ -34,6 +40,13 @@ export function NavBar() {
                 Nueva Nota
                 </Link>
               </li>
+              
+              <li className="nav-link active">
+                <Link aria-current="page" to="/login"> 
+                Cerrar Sesion
+                </Link>
+              </li>
+              
             
             </ul> 
           </div>
