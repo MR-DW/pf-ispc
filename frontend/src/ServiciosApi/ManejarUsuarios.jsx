@@ -49,7 +49,7 @@ export const crearUsuario = (newUsuario) => {
     },
     body:JSON.stringify({
         "password": String(newUsuario.password).trim(),
-        // id_usuarios: Number(newUsuario.id_usuarios_id),
+        "id_usuarios": Number(newUsuario.id_usuarios_id),
         "username": String(newUsuario.username).trim(),
         "email": String(newUsuario.email).trim(),
         "nombre": String(newUsuario.nombre).trim(),        

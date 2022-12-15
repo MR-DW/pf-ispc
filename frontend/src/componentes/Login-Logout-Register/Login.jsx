@@ -1,8 +1,13 @@
 import React from "react";
+// Import useState para manejar estados
 import { useState } from "react";
+// Import manejador de links
 import { Link } from "react-router-dom";
-
+// Import Server con servicios apis.
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
+// Import hoja-de-estilos Css
+import '../../hoja-de-estilos/login.css'
+
 
 export function Login() {
   //   useState
@@ -53,14 +58,15 @@ export function Login() {
             />
 
             <button type="submit">Ingresar</button>
-          </form>
-
-          {/* Link para registrarse */}
-          <button>
+            <button>
                 <Link aria-current="page" to={`/usuario/registrar-usuario/`}> 
                   Registrarse...
                 </Link>
-          </button>
+            </button>
+          </form>
+
+          {/* Link para registrarse */}
+          
             
         </section>
       ) : (

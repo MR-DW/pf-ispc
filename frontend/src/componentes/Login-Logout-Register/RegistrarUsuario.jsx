@@ -13,8 +13,8 @@ export function RegistrarUsuario() {
 
    // useState
   const [nuevoUsuario, setNuevoUsuario] = useState(ManejarUsuarios.usuarioInfo);
-  console.log('usuarioinfo:',ManejarUsuarios.usuarioInfo);
-  console.log('nuevoUsuario',nuevoUsuario);
+  // console.log('usuarioinfo:',ManejarUsuarios.usuarioInfo);
+  // console.log('nuevoUsuario',nuevoUsuario);
   
   var res;
   const handleSubmit = async (e) => {
@@ -23,6 +23,7 @@ export function RegistrarUsuario() {
       try {
         if(!params.id_usuarios){
         //   console.log('Entra en params.id_notas NO EXISTE');
+        console.log('nuevoUsuario:', nuevoUsuario);
           res = await ManejarUsuarios.crearUsuario(nuevoUsuario);
           console.log('RES:', res);
           // const data = await res.json();
@@ -30,6 +31,7 @@ export function RegistrarUsuario() {
           // console.log('DATA:', data);
           // setNuevaNota(data);
           if (data.id_usuarios !== 0){
+            
             setNuevoUsuario(ManejarUsuarios.usuarioInfo);
           }
           history('/login')

@@ -19,8 +19,8 @@ class CrearUsuario(APIView):
 
     def post(self, request):
         """Crear un usuario"""
-
-        usuario_serializer = UsuariosSerializer(data = request.data)
+        print(request.data)
+        usuario_serializer = UsuariosSerializer(data = request.data, many = True)
         print(usuario_serializer)
         # Validación
         if usuario_serializer.is_valid():

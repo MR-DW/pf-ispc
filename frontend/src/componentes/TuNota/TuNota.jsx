@@ -69,8 +69,12 @@ export function TuNota(){
                   Editar...
                 </Link>
             </button>
+            
+          </div>
+          <div>
             <BorrarNota />
           </div>
+          
       </div>
     </>
   );

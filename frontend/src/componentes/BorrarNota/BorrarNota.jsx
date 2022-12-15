@@ -19,7 +19,7 @@ export function BorrarNota() {
 
     // Funcion para traer notas
     const HandleDelete = async (e) => {
-    
+      // e.preventDefault();
       try{
         // if (id_notas === borrarNota.id_notas) {
             const res = await TraerNotas.EliminarNota({ id_usuarios, id_notas });
@@ -32,7 +32,7 @@ export function BorrarNota() {
             //     setBorrarNota('');
             //     console.log('se borro');
             // }
-            history('/notas/mostrar-notas/:id_usuarios/')
+            history(`/notas/mostrar-notas/${id_usuarios}/`)
           // }
   } catch(error){
           console.log(error);
@@ -41,7 +41,7 @@ export function BorrarNota() {
   
   return (
     <>
-        <button onClick={ HandleDelete()} className='borrar-nota btn btn-danger' type='button'>
+        <button onClick={ (e) => HandleDelete() } className='borrar-nota btn btn-danger' type='button'>
             Eliminar
         </button>
 

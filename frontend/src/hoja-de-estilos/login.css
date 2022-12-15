@@ -1,0 +1,24 @@
+section{
+    background-color: rgb(244, 192, 149);
+    height: 100vh;
+    width: 100vw;
+}
+
+h1{
+    text-align: center;
+    color:rgb(154, 78, 1);
+}
+
+form{
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+    color: rgb(154, 78, 1);
+    font-weight: 500;
+}
+
+label, input{
+    
+}
+
