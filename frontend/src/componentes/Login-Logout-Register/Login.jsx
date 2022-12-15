@@ -1,8 +1,9 @@
 import React from "react";
 import { useState } from "react";
+import { Link } from "react-router-dom";
 
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
-import { RegistrarUsuario } from "./RegistrarUsuario";
+// import { RegistrarUsuario } from "./RegistrarUsuario";
 
 export function Login() {
   // useRef
@@ -50,6 +51,7 @@ export function Login() {
 
   return (
     <>
+    
       {!usuario ? (
         <section>
           {/* <p
@@ -87,23 +89,45 @@ export function Login() {
           </form>
 
           {/* Link para registrarse */}
-          <p>
-            Registrate...
-            <span className="line">
-              {/* <a href="#">Aquí</a> */}
-            </span>
-          </p>
+          <button>
+                <Link aria-current="page" to={`/registrar-usuario`}> 
+                  Registrarse...
+                </Link>
+          </button>
+            
         </section>
+        
+        
           
       ) : (
         <section>
           <h1>Bienvenido {usuario.nombre} {usuario.apellido} a tu Block de Notas</h1>
-          {/* <p>
-            <a href="#">Ir al menu</a>
-          </p> */}
+          <hr></hr>
+          <h2>¿Cómo utilizar la aplicación?</h2>
+          <p>
+          1 - Login de usuario: Te solicita mail y contraseña para poder ingresar, si las mismas son incorrectas permaneceras en la pantalla de Login, sí es correcta te redirigirá a la pantalla de Bienvenida. Esta pantalla cuenta con un botón para poder registrarte como usuario, el mismo te redirije a la pantalla correspondiente para tal fin.
+          <br></br>
+          <br></br>
+          2 - Registro de usuario: Te solicita una serie de datos (Nombre, Apellido, Mail, Nombre de Usuario y Contraseña). Luego de completar todos los campos podrás registrarte haciendo click en el botón que está por debajo del formulario. Luego te redirijirá a la pantalla de Login para que puedas iniciar sesion con tu cuenta.
+          <br></br>
+          <br></br>
+          3 - Pantalla de bienvenida y tutorial de uso de la app: La pantalla te recibe con tu nombre y apellido, además cuenta con una breve introducción al uso de la aplicación.
+          <br></br>
+          <br></br>
+          4 - Visualizar todas las notas creadas: En esta pantalla, podrás encontrar todas las notas creadas por el usuario, la misma muestra el titulo y cuerpo de la nota. Cuenta con un botón para poder acceder a la nota y visualizarla con mayor detalle en otra pantalla.
+          <br></br>
+          <br></br>
+          5 - Viasualizar una nota y borrar una nota. : Aquí podrás observar una nota creada por el usuario con mayor detalle, en la misma contarás con dos botones, uno para eliminar la nota y el otro para editar la misma.
+          <br></br>
+          <br></br>
+          6 -  Editar nota: En esta pantalla podrás editar tu nota, cambiando su título o cuerpo y pudiendo guardar nuevos datos. Luego de guardar los cambios apretando el botón correspondiente, se te redirijirá a la pantalla para visualizar todas las notas creadas.
+          <br></br>
+          <br></br>
+          7 - Crear una nota: Esta pantalla cuenta con su propio link en la barra de navegación, la misma te permite crear una nueva nota, introduciendo su título y cuerpo de la nota.
+          </p>
         </section>
       )}
-      <RegistrarUsuario />
+      
     </>
   );
 }

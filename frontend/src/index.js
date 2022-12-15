@@ -13,6 +13,7 @@ import { BrowserRouter, Routes, Route } from 'react-router-dom';
 // importar Componentes Propios
 import { NavBar } from './componentes/NavBar';
 import { Login } from './componentes/Login-Logout-Register/Login';
+import { RegistrarUsuario } from './componentes/Login-Logout-Register/RegistrarUsuario';
 // import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
 import { TuNota } from './componentes/TuNota/TuNota'
 import { EditarNota } from './componentes/EditarNota/EditarNota';
@@ -31,11 +32,13 @@ root.render(
         {/* Siempre debe estar dentro del BrowserRouter */}
             <Routes>
               <Route path='/login' element={<Login/>} />
-              <Route exact path='/' element={<App/>} />
-              <Route path='/tu-nota/1/12/' element={<TuNota />} />
-              <Route path='/editar-nota/1/12/' element={<EditarNota />} />
+              <Route path='/registrar-usuario' element={<RegistrarUsuario />} />
               
-              <Route path='/crear-nota/' element={<CrearNota/>} />
+              <Route exact path='/' element={<App/>} />
+              <Route path='/tu-nota/1/12' element={<TuNota />} />
+              <Route path='/editar-nota/1/12' element={<EditarNota />} />
+              
+              <Route path='/crear-nota' element={<CrearNota/>} />
             </Routes>
 
       </BrowserRouter>
