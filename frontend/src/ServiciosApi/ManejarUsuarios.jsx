@@ -14,12 +14,15 @@ export const usuarioInfo = [
 
 
 // Traer 1 usuario
+// const URL_TRAER_UN_USUARIO = "http://127.0.0.1:8000/usuario/tu-usuario/";
 const URL_TRAER_UN_USUARIO = "http://127.0.0.1:8000/usuario/tu-usuario/2/";
 
+// export const getUnUsuario = async ({id_usuarios}) => {
 export const getUnUsuario = async () => {
   return fetch(
     // API_URL,
     URL_TRAER_UN_USUARIO,
+    // `${URL_TRAER_UN_USUARIO}${id_usuarios}/`,
     {method: 'POST',
 //     headers:{
 //       'Content-type':'application/json'
@@ -32,7 +35,8 @@ export const getUnUsuario = async () => {
     //   username: String(usuario.username).trim(),
     //   apellido: String(usuario.apellido).trim()
     // })
-  });
+  }
+  );
 };
 
 

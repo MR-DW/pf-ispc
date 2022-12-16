@@ -1,15 +1,21 @@
 import React, {useState } from "react";
 // , useEffect
-import { useNavigate, useParams } from 'react-router-dom'
+import { useParams } from 'react-router-dom'
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 // Import barra de navegación
 import { NavBar } from "../NavBar";
+// Import manejador de links
+// import { Link } from "react-router-dom";
 
 export function CrearNota() {
 
   // console.log(ListadoDeNotas.nota)
-  var history = useNavigate();
+  // var history = useNavigate();
+  // const usuario = useParams();
+  // const {id_usuarios } = useParams();
+  // console.log('id_usuarios', id_usuarios)
   var params = useParams();
+  console.log('params', params)
 
    // useState
   const [nuevaNota, setNuevaNota] = useState(TraerNotas.infoNota);
@@ -22,6 +28,7 @@ export function CrearNota() {
    
       try {
         if(!params.id_notas){
+        // if(!usuario.id_notas){
           console.log('Entra en params.id_notas NO EXISTE');
           res = await TraerNotas.crearNotas(nuevaNota);
           console.log('RES:', res);
@@ -31,7 +38,7 @@ export function CrearNota() {
           if (data.id_notas !== 0){
               setNuevaNota(TraerNotas.infoNota);
           }
-          history('/')
+          // history(`/notas/mostrar-notas/${id_usuarios}/`)
         }
       }catch(error){
         console.log(error);
@@ -45,6 +52,8 @@ export function CrearNota() {
   return (
     <>
       <NavBar/>
+      <h2>CREA TU NOTA</h2>
+      {/* <h4>Tu Número Identificador de Usuario es: {id_usuarios}</h4> */}
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -88,7 +97,9 @@ export function CrearNota() {
           ></input>
         </div>
         <button type="submit" className="btn btn-primary" >
-          Crear Nota
+          {/* <Link aria-current="page" to={`/notas/mostrar-notas/${id_usuarios}/`}> 
+            Crear Nota
+          </Link> */}
         </button>
       </form>
     </>

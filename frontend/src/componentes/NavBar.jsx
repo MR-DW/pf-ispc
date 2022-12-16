@@ -4,7 +4,7 @@ import { Link, useParams } from 'react-router-dom';
 export function NavBar() {
 
   const { id_usuarios } = useParams();
-  console.log(id_usuarios)
+ 
 
   return (
     <>

@@ -2,10 +2,10 @@
 // INITIAL STATE
 export const infoNota = [
   {
-    'id_notas': 0,
-    'titulo': "Titulo",
-    'cuerpo': "Aquí se desarrolla tu nota",
-    'id_usuarios': 0,
+    "id_notas": 0,
+    "titulo": "Titulo",
+    "cuerpo": "Aquí se desarrolla tu nota",
+    "id_usuarios": 0
   },
 ];
 
@@ -71,20 +71,22 @@ export const EliminarNota = async ({ id_usuarios, id_notas }) => {
 // API PARA CREAR UNA Nota
 const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
 
-export const crearNotas = (newNota) => {
+// export const crearNotas = (nuevaNota, {id_usuarios}) => {
+export const crearNotas = (nuevaNota) => {
 
   return fetch(
     // API_URL,
     URL_CREAR_NOTAS,
+    // `${URL_CREAR_NOTAS}${id_usuarios}`,
     {method: 'POST',
     headers:{
       'Content-type':'application/json'
     },
     body: JSON.stringify({
       // id_notas: Int(newNota.id_notas),
-      titulo: String(newNota.titulo).trim(),
-      cuerpo: String(newNota.cuerpo).trim(),
-      id_usuarios: Number(newNota.id_usuarios)
+      titulo: String(nuevaNota.titulo).trim(),
+      cuerpo: String(nuevaNota.cuerpo).trim(),
+      id_usuarios: Number(nuevaNota.id_usuarios)
     })
   });
 };

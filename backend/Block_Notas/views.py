@@ -7,19 +7,17 @@ from rest_framework import status
 
 # Models imports
 from Block_Notas.models import Notas
-# from Usuarios.models import Usuarios
+from Usuarios.models import Usuarios
+
 
 # Import Serializer
 from Block_Notas.serializers import NotasSerializers
-# # Import de funcion login
-# from django.contrib.auth.decorators import login_required
-# # Import de funcion logout
-# from django.contrib.auth import logout
+# from Usuarios.serializers import UsuariosSerializer
 
-# Create your views here.   
+
+ 
 # METODOS PARA NOTAS
 # Mostrar Todas Las Notas
-# @login_required
 class MostrarNotas(APIView):
     def get(self, request, pk):
         """Retrona listado de las notas creadas"""
@@ -35,7 +33,6 @@ class MostrarNotas(APIView):
         )
 
 # Mostrar Una Nota
-# @login_required
 class TraerUnaNota(APIView):
     def get(self, request, pk2, pk):
         #  pk2,
@@ -112,26 +109,27 @@ class CrearNotas(APIView):
         def post(self, request):
 
             """Me permite crear una nota"""
+            print('request',request)
+            try:
+                # nota = Notas.objects.filter(id_usuarios = pk)
+                # print('usuario',nota)
+                nueva_nota_serializer =  NotasSerializers( data = request.data)
+                print('serializer:',nueva_nota_serializer)
 
-            nueva_nota_serializer =  NotasSerializers(data = request.data)
-            print(nueva_nota_serializer)
+                if nueva_nota_serializer.is_valid():
+                    
+                    nueva_nota_serializer.save()
 
-            if nueva_nota_serializer.is_valid():
-                nueva_nota_serializer.save()
+                    return Response(
+                            data = nueva_nota_serializer.data,
+                            status = status.HTTP_201_CREATED
+                    )
                 
-                data = {
-                'mensaje': 'Tu nota fue creada correctamente'
-                    }
-
+            except:    
                 return Response(
-                    data = data,
-                    status = status.HTTP_201_CREATED
+                data = nueva_nota_serializer.errors,
+                status = status.HTTP_400_BAD_REQUEST
                 )
-            return Response(
-            data = nueva_nota_serializer.errors,
-            status = status.HTTP_400_BAD_REQUEST
-            )
-
         
         
 
