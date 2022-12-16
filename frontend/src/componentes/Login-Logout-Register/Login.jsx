@@ -29,17 +29,17 @@ export function Login() {
   // logica para enviar formulario
   const handleSubmit = async (e) => {
     console.log("ejecuta el submit");
-    // e.preventDefault();
+    e.preventDefault();
     try {
       console.log("hola");
       // const res = await ManejarUsuarios.getUnUsuario({ id_usuarios });
       const res = await ManejarUsuarios.getUnUsuario();
-      console.log(res);
+      console.log('Response',res);
       const data = await res.json();
-      console.log(data);
-      // const { id_notas, titulo, cuerpo, id_usuarios } = data.verNota;
+      console.log('Data',data);
       // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
       setUsuario(data);
+      console.log('usuarios',usuario)
       // setSuccess();
     } catch (error) {
       console.log(error);
@@ -47,9 +47,9 @@ export function Login() {
   };
 
   // useEffect
-  useEffect(() => {
-    handleSubmit()
-  },[]);
+  // useEffect(() => {
+  //   handleSubmit()
+  // },[]);
 
   // const handleInputChange = (e) =>{
     // setUsuario({...usuario, [e.target.name]: e.target.value});
@@ -63,8 +63,7 @@ export function Login() {
 
           <h1>Ingresa a tu Block de Notas</h1>
 
-          <form> 
-          {/* // onSubmit={handleSubmit}> */}
+          <form onSubmit={handleSubmit}> 
             <label htmlFor="mail">Mail:</label>
             <input
               type="email"

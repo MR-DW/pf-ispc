@@ -34,7 +34,7 @@ export function RegistrarUsuario() {
             
             setNuevoUsuario(ManejarUsuarios.usuarioInfo);
           }
-          history('/login')
+          history('/')
         }
       }catch(error){
         console.log(error);
