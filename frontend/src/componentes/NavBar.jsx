@@ -46,7 +46,7 @@ export function NavBar() {
               </li>
               
               <li className="nav-link active">
-                <Link aria-current="page" to="/notas/crear-nota/"> 
+                <Link aria-current="page" to={`/notas/crear-nota/`}> 
                 Nueva Nota
                 </Link>
               </li>
