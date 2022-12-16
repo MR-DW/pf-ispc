@@ -36,7 +36,7 @@ class CrearUsuario(APIView):
             )
            
         return Response(
-            data = UsuariosSerializer.errors,
+            data = usuario_serializer.errors,
             status=status.HTTP_400_BAD_REQUEST
         )
 
