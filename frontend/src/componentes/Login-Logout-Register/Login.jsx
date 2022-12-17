@@ -27,9 +27,16 @@ export function Login() {
     e.preventDefault();
     try {
       // console.log("hola");
-      // const res = await ManejarUsuarios.getUnUsuario({ id_usuarios });
-      // Si utilizo el id_usuarios que tiene asignado el useParams, cuando realizo el consumo de la api no puede traerme el usuario en formato json, porlo que no se puede continuar con el login.
+
+      // IMPORTANTE
+      
+      // Al querer utilizar el consumo de la api de manera dinamica, obteniendo con el uso de un useParams el id_usuario, si lo utilizo,
+      // cuando realizo el consumo de la api no puede traerme el usuario en formato json, porlo que no se puede continuar con el login.
       // En cambio al utilizar una ruta api estatica, donde ya le paso el id_del usuario que deseo traer, toda la logica funciona correctamente.
+      // Revisar el server.
+      
+      // const res = await ManejarUsuarios.getUnUsuario({ id_usuarios });
+    
       const res = await ManejarUsuarios.getUnUsuario();
       console.log("Response", res);
       const data = await res.json();
