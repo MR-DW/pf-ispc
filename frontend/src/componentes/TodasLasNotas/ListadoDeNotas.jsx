@@ -5,13 +5,14 @@ import { useEffect, useState } from 'react';
 
 // import link para dirigirme a una nota especifica. y poder editarla.
 import { Link } from 'react-router-dom';
+// import useParams
 import { useParams } from 'react-router-dom';
 
 export function ListadoDeNotas(){
 
   // useParams
   const { id_usuarios } = useParams();
-  // console.log(id_usuarios);
+  
 
   // useState
   const [nota, setNotas] = useState([]);
@@ -22,9 +23,7 @@ export function ListadoDeNotas(){
       console.log(res);
       const data = await res.json();
       console.log(data);
-      // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
       setNotas(data);
-      // console.log(params)
     } catch(error){
             console.log(error);
       }

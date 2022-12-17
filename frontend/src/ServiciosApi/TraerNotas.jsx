@@ -42,15 +42,15 @@ export const ModificarNota = async (editarNota, { id_usuarios, id_notas }) => {
     `${URL_EDITAR_NOTA}${id_usuarios}/${id_notas}/`,
     {method: 'PUT',
     body: JSON.stringify({
-      id_notas: Number(editarNota.id_notas),
+      id_notas: Number(id_notas),
       titulo: String(editarNota.titulo).trim(),
       cuerpo: String(editarNota.cuerpo).trim(),
-      id_usuarios: Number(editarNota.id_usuarios),
+      id_usuarios: Number(id_usuarios),
     })
   }
     );
 }
-// VER PORQUE LA RES DEL COMPONENTE QUE CONSUME LA API EDITANOTA NO PONE EL ID_NOTA.
+
 
 // API PARA BORRAR UNA NOTA
 const URL_BORRAR_NOTA = "http://127.0.0.1:8000/notas/borrar-nota/";
@@ -72,18 +72,15 @@ export const EliminarNota = async ({ id_usuarios, id_notas }) => {
     })
   })
 };
-// VER PORQUE EL COMPONENTE QUE CONSUME LA API NO BORRA LA NOTA.
+
 
 // API PARA CREAR UNA Nota
 const URL_CREAR_NOTAS = "http://127.0.0.1:8000/notas/nueva-nota/";
 
-// export const crearNotas = (nuevaNota, {id_usuarios}) => {
 export const crearNotas = (nuevaNota) => {
 
   return fetch(
-    // API_URL,
     URL_CREAR_NOTAS,
-    // `${URL_CREAR_NOTAS}${id_usuarios}`,
     {method: 'POST',
     headers:{
       'Content-type':'application/json'

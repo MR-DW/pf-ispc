@@ -24,17 +24,6 @@ export const getUnUsuario = async () => {
     URL_TRAER_UN_USUARIO,
     // `${URL_TRAER_UN_USUARIO}${id_usuarios}/`,
     {method: 'POST',
-//     headers:{
-//       'Content-type':'application/json'
-//     },
-//     // mode: 'no-cors',
-    // body: JSON.stringify({
-    //   id_usuarios_id: Number(usuario.id_usuarios_id),
-    //   nombre: String(usuario.nombre).trim(),
-    //   email: String(usuario.email).trim(),
-    //   username: String(usuario.username).trim(),
-    //   apellido: String(usuario.apellido).trim()
-    // })
   }
   );
 };

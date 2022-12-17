@@ -35,11 +35,7 @@ export function TuNota(){
         const res = await TraerNotas.getUnaNota({ id_usuarios, id_notas });
         const data = await res.json();
         console.log('DATA:', data)
-        // le paso al seter de valores de la var, el nuevo estado(valores) que se lo brinda el consumo de la api.  useState
         setVerNota(data);
-        // console.log(params.id_usuarios);
-        
-        // console.log(verNota.id_usuarios)
       } catch(error){
               console.log(error);
         }

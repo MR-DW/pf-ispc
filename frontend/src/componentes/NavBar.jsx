@@ -10,10 +10,9 @@ export function NavBar() {
     <>
       <nav className="navbar navbar-expand-lg bg-light">
         <div className="container-fluid">
-          {/* <a className="navbar-brand" href='/'></a> */}
            
           <li className="nav-link active">
-            <Link aria-current="page" to={`/${id_usuarios}/`}> 
+            <Link aria-current="page" to={`/notas/mostrar-notas/${id_usuarios}/`}> 
                 <p className="nombrePag">TU BLOCK DE NOTAS</p>
             </Link>
           </li>
@@ -46,7 +45,7 @@ export function NavBar() {
               </li>
               
               <li className="nav-link active">
-                <Link aria-current="page" to={`/notas/crear-nota/`}> 
+                <Link aria-current="page" to={`/notas/crear-nota/${id_usuarios}/`}> 
                 Nueva Nota
                 </Link>
               </li>

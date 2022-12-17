@@ -10,21 +10,21 @@ import { NavBar } from "../NavBar";
 export function EditarNota() {
 
   // useNavigate
-  var history = useNavigate();
+  // var history = useNavigate();
   // useParams para ruta dinamica
   const { id_usuarios, id_notas } = useParams();
   // console.log(id_usuarios, id_notas);
   // console.log(useParams());
 
    // useState
-  const [editarNota, setEditarNota] = useState([]);
+  const [editarNota, setEditarNota] = useState(TraerNotas.infoNota);
 
   const handleSubmit = async (e) => {
       console.log('HANDLESUBMIT:', editarNota);
       e.preventDefault();
-   
-      // La ejecución lógica no consume la api ya que no entra en el try y no ejecuta el response, tampoco me devuelve un error en consola.
-      // La lógica del backend si funciona,requiere que se le pasen todas las props menos la de id_notas.
+    
+      // Error en consola BAD REQUEST DATA devuelve que no se encuentra mi nota
+      // setEditarNota no setea los valores de editNota por lo que titulo y cuerpo se pasan a la api vacio (undefined).
       
       try {
         // if(id_notas){
@@ -41,19 +41,19 @@ export function EditarNota() {
         //       setEditarNota(editarNota.titulo, editarNota.cuerpo );
         //       // console.log('setNuevaNota:',setNuevaNota(TraerNotas.infoNota))
         //   }
-          history(`/notas/mostrar-notas/${id_usuarios}/`)
+          // history(`/notas/mostrar-notas/${id_usuarios}/`)
         // }
       }catch(error){
         console.log(error);
       }
   };
 
-  // const handleInputChange = (e) =>{
-  //   setEditarNota({...editarNota, [e.target.name]: e.target.value});
+  const handleInputChange = (e) =>{
+    setEditarNota({...editarNota, [e.target.name]: e.target.value});
   //   // console.log('name:',e.target.name);
   //   // console.log('value:',e.target.value);
   //   // console.log('nuevaNota',nuevaNota)
-  // };
+  };
 
   return (
     <>
@@ -72,7 +72,7 @@ export function EditarNota() {
             placeholder="Elige tu Titulo"
             name="titulo"
             value = {editarNota.titulo}
-            // onChange = { (e) => handleInputChange()}
+            onChange = { (e) => handleInputChange()}
           ></input>
         </div>
         <div className="mb-3">
@@ -86,7 +86,7 @@ export function EditarNota() {
             placeholder="Desarrolla tu nota..."  
             name="cuerpo"
             value={editarNota.cuerpo}
-            // onChange = { (e) => handleInputChange()}
+            onChange = { (e) => handleInputChange()}
           ></textarea>
           <label htmlFor="exampleFormControlInput2" className="form-label">
             Numero de identificación de Usuario
@@ -98,7 +98,7 @@ export function EditarNota() {
             placeholder="Numero de identificación de Usuario"
             name="id_usuarios"
             value = {editarNota.id_usuarios = id_usuarios}
-            // onChange = { (e) => handleInputChange()}
+            onChange = { (e) => handleInputChange()}
           ></input>
         </div>
         <button type="submit" className="btn btn-primary" >

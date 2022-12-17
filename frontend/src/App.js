@@ -2,11 +2,8 @@
 import './App.css';
 // Import componentes
 import { ListadoDeNotas } from './componentes/TodasLasNotas/ListadoDeNotas';
-// import { VerNotaIndividual} from './componentes/VistaNota/nota'
-import { NavBar } from './componentes/NavBar';
-// import { CrearNota } from './componentes/CrearNota/CrearNota';
 
-// import router-dom
+import { NavBar } from './componentes/NavBar';
 
 
 function App() {
