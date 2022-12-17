@@ -33,14 +33,19 @@ export const getUnaNota = async ({ id_usuarios, id_notas }) => {
 
 // API PARA EDITAR NOTA
 const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/";
+// const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/1/18/";
 
-export const ModificarNota = async ({ id_usuarios, id_notas }) => {
+export const ModificarNota = async (editarNota, { id_usuarios, id_notas }) => {
+// export const ModificarNota = async (editarNota) => {
   return await fetch(
+    // URL_EDITAR_NOTA,
     `${URL_EDITAR_NOTA}${id_usuarios}/${id_notas}/`,
     {method: 'PUT',
     body: JSON.stringify({
-      titulo: String(id_notas.titulo).trim(),
-      cuerpo: String(id_notas.cuerpo).trim(),
+      id_notas: Number(editarNota.id_notas),
+      titulo: String(editarNota.titulo).trim(),
+      cuerpo: String(editarNota.cuerpo).trim(),
+      id_usuarios: Number(editarNota.id_usuarios),
     })
   }
     );

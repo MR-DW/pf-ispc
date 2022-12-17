@@ -5,8 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom';
 // IMPORT DE API
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 
-
-// VER PORQUE NO BORRA LA NOTA
 export function BorrarNota() {
 
     var history = useNavigate();
@@ -19,21 +17,16 @@ export function BorrarNota() {
 
     // Funcion para traer notas
     const HandleDelete = async (e) => {
-      // e.preventDefault();
+
       try{
-        // if (id_notas === borrarNota.id_notas) {
             const res = await TraerNotas.EliminarNota({ id_usuarios, id_notas });
             console.log('RES:', res);
             const data = await res.json();
             console.log('DATA:', data);
             setBorrarNota(data);
             console.log('se borro');
-            // if (data.id_notas === 0){
-            //     setBorrarNota('');
-            //     console.log('se borro');
-            // }
+            
             history(`/notas/mostrar-notas/${id_usuarios}/`)
-          // }
   } catch(error){
           console.log(error);
     }
