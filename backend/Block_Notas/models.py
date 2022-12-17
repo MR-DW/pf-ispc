@@ -24,5 +24,4 @@ class Notas(models.Model):
         verbose_name_plural = 'notas'
         db_table = 'notas'
 
-# Probando login con reat
-# from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+

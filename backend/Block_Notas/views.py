@@ -12,8 +12,6 @@ from Usuarios.models import Usuarios
 
 # Import Serializer
 from Block_Notas.serializers import NotasSerializers
-# from Usuarios.serializers import UsuariosSerializer
-
 
  
 # METODOS PARA NOTAS
@@ -22,7 +20,6 @@ class MostrarNotas(APIView):
     def get(self, request, pk):
         """Retrona listado de las notas creadas"""
 
-        # usuario = Usuarios.objects.get(id_usuarios = pk)
         notas = Notas.objects.filter(id_usuarios_id = pk)
 
         notas_serializer = NotasSerializers(notas, many=True)
@@ -31,6 +28,7 @@ class MostrarNotas(APIView):
            data = notas_serializer.data,
            status=status.HTTP_200_OK
         )
+
 
 # Mostrar Una Nota
 class TraerUnaNota(APIView):
@@ -55,8 +53,8 @@ class TraerUnaNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+
 # Editar Una Nota
-# @login_required
 class EditarNota(APIView):
     def put(self, request, pk2, pk):
         """Modifica una nota particular."""
@@ -83,8 +81,8 @@ class EditarNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+
 # Borrar una Nota
-# @login_required
 class BorrarNota(APIView):
     def delete(self, request, pk2, pk):
         """Elimina una nota particular."""
@@ -107,6 +105,7 @@ class BorrarNota(APIView):
                 status=status.HTTP_400_BAD_REQUEST
             )
 
+
 # Crear Una Nota
 class CrearNotas(APIView):
 
@@ -115,8 +114,6 @@ class CrearNotas(APIView):
             """Me permite crear una nota"""
             print('request',request)
             try:
-                # nota = Notas.objects.filter(id_usuarios = pk)
-                # print('usuario',nota)
                 nueva_nota_serializer =  NotasSerializers( data = request.data)
                 print('serializer:',nueva_nota_serializer)
 
@@ -134,34 +131,4 @@ class CrearNotas(APIView):
                 data = nueva_nota_serializer.errors,
                 status = status.HTTP_400_BAD_REQUEST
                 )
-        
- # Crea notas, requiere que se le pasen si o si todas las props
-# class EditarNota(APIView):
-#     def put(self, request):
-#         """Modifica una nota particular."""
-#         try:
-#             # nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
-#             # print('NOTA',nota)
-#             custom_nota_serializer =  NotasSerializers(data = request.data)
-#             # print('valores SERIALIZER',custom_nota_serializer.value())
-#             print('NOTA SERIALIZER',custom_nota_serializer)
-
-#             if custom_nota_serializer.is_valid():
-#                 custom_nota_serializer.save()
-            
-#                 return Response(
-#                     data = custom_nota_serializer.data,
-#                     status=status.HTTP_200_OK
-#                 )
-#         except:    
-#             data ={
-#                 'mensaje':'Tu nota no fue encontrada'
-#             }
-#             return Response(
-#                 data = data,
-#                 status=status.HTTP_400_BAD_REQUEST
-#             )        
-
-
-
-
+     

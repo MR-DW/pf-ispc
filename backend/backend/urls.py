@@ -21,5 +21,4 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('notas/', include('Block_Notas.urls'), name='listado-de-notas'),
     path('usuario/', include('Usuarios.urls'), name='manejo-de-usuario'),
-    # path('accounts/', include('django.contrib.auth.urls')),
 ]

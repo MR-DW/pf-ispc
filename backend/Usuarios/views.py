@@ -10,9 +10,6 @@ from Usuarios.serializers import UsuariosSerializer
 # Models imports
 from Usuarios.models import Usuarios
 
-# # Import de funcion login
-# from django.contrib.auth.decorators import login_required
-
 
 # CREAR UN USUARIO
 class CrearUsuario(APIView):
