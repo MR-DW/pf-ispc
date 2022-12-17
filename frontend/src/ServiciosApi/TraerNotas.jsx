@@ -33,6 +33,7 @@ export const getUnaNota = async ({ id_usuarios, id_notas }) => {
 
 // API PARA EDITAR NOTA
 const URL_EDITAR_NOTA = "http://127.0.0.1:8000/notas/editar-nota/";
+
 export const ModificarNota = async ({ id_usuarios, id_notas }) => {
   return await fetch(
     `${URL_EDITAR_NOTA}${id_usuarios}/${id_notas}/`,

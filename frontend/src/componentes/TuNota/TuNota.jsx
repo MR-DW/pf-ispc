@@ -65,7 +65,7 @@ export function TuNota(){
 
           <div className="button">
             <button type="button" className="btn btn-primary">
-                <Link aria-current="page" to={`/notas/editar-nota/${verNota.id_usuarios_id}/${verNota.id_notas}/`}> 
+                <Link aria-current="page" to={`/notas/editar-nota/${verNota.id_usuarios}/${verNota.id_notas}/`}> 
                   Editar...
                 </Link>
             </button>

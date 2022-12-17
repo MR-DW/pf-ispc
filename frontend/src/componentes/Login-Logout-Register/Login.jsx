@@ -2,37 +2,35 @@ import React from "react";
 // Import useState para manejar estados
 import { useState } from "react";
 // Import useParams
-// import { useParams } from "react-router-dom";
+import { useParams } from "react-router-dom";
 // Import manejador de links
 import { Link } from "react-router-dom";
 // Import Server con servicios apis.
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
 // Import hoja-de-estilos Css
 import '../../hoja-de-estilos/login.css'
-import { useEffect } from "react";
+
 
 
 export function Login() {
 
+  // useParams
+  // const { id_usuarios } = useParams();
+  // console.log(id_usuarios)
+
   //   useState
   const [usuario, setUsuario] = useState();
   // console.log('usuario',usuario)
-
-  //  useParams
-  // const { id_usuario } = useParams();
-  // console.log('useparams',useParams())
-  // console.log('id_usuario',id_usuario)
-
-  // console.log('email', usuario.email)
-  // console.log('usuario:',usuario)
 
   // logica para enviar formulario
   const handleSubmit = async (e) => {
     console.log("ejecuta el submit");
     e.preventDefault();
     try {
-      console.log("hola");
+      // console.log("hola");
       // const res = await ManejarUsuarios.getUnUsuario({ id_usuarios });
+      // Si utilizo el id_usuarios que tiene asignado el useParams, cuando realizo el consumo de la api no puede traerme el usuario en formato json, porlo que no se puede continuar con el login.
+      // En cambio al utilizar una ruta api estatica, donde ya le paso el id_del usuario que deseo traer, toda la logica funciona correctamente.
       const res = await ManejarUsuarios.getUnUsuario();
       console.log('Response',res);
       const data = await res.json();
@@ -46,16 +44,6 @@ export function Login() {
     }
   };
 
-  // useEffect
-  // useEffect(() => {
-  //   handleSubmit()
-  // },[]);
-
-  // const handleInputChange = (e) =>{
-    // setUsuario({...usuario, [e.target.name]: e.target.value});
-  // };
-  // Con el setSucces le digo que la operacion fue exitosa si o si.
-    // console.log(usuario.id_usuarios)
   return (
     <>
       {!usuario ? (

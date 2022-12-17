@@ -58,14 +58,18 @@ class TraerUnaNota(APIView):
 # Editar Una Nota
 # @login_required
 class EditarNota(APIView):
-    def put(self, request, pk, pk2):
+    def put(self, request, pk2, pk):
         """Modifica una nota particular."""
         try:
             nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
+            print('NOTA',nota)
+            
             custom_nota_serializer =  NotasSerializers(nota, data = request.data)
-            # print(custom_nota_serializer.value())
+            print('NOTA SERIALIZER',custom_nota_serializer)
+
             if custom_nota_serializer.is_valid():
                 custom_nota_serializer.save()
+            
                 return Response(
                     data = custom_nota_serializer.data,
                     status=status.HTTP_200_OK
@@ -131,7 +135,32 @@ class CrearNotas(APIView):
                 status = status.HTTP_400_BAD_REQUEST
                 )
         
-        
+ # Crea notas, requiere que se le pasen si o si todas las props
+# class EditarNota(APIView):
+#     def put(self, request):
+#         """Modifica una nota particular."""
+#         try:
+#             # nota = Notas.objects.filter(id_usuarios_id = pk2).get(id_notas = pk)
+#             # print('NOTA',nota)
+#             custom_nota_serializer =  NotasSerializers(data = request.data)
+#             # print('valores SERIALIZER',custom_nota_serializer.value())
+#             print('NOTA SERIALIZER',custom_nota_serializer)
+
+#             if custom_nota_serializer.is_valid():
+#                 custom_nota_serializer.save()
+            
+#                 return Response(
+#                     data = custom_nota_serializer.data,
+#                     status=status.HTTP_200_OK
+#                 )
+#         except:    
+#             data ={
+#                 'mensaje':'Tu nota no fue encontrada'
+#             }
+#             return Response(
+#                 data = data,
+#                 status=status.HTTP_400_BAD_REQUEST
+#             )        
 
 
 

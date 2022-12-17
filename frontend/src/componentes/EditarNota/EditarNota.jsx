@@ -1,6 +1,7 @@
 import React, {useState } from "react";
 // , useEffect
-import { useNavigate, useParams } from 'react-router-dom'
+import {  useParams } from 'react-router-dom'
+// useNavigate,
 // Import de server 
 import * as TraerNotas from '../../ServiciosApi/TraerNotas'
 // Import de barra de navegacion
@@ -10,23 +11,27 @@ import { NavBar } from "../NavBar";
 export function EditarNota() {
 
   // useNavigate
-  var history = useNavigate();
+  // var history = useNavigate();
   // useParams para ruta dinamica
   const { id_usuarios, id_notas } = useParams();
-  console.log(id_usuarios, id_notas);
-  console.log(useParams());
+  // console.log(id_usuarios, id_notas);
+  // console.log(useParams());
 
    // useState
-  const [editarNota, setEditarNota] = useState([]);
+  const [editarNota, setEditarNota] = useState(TraerNotas.infoNota);
 
-  var res;
   const handleSubmit = async (e) => {
       console.log('HANDLESUBMIT:', editarNota);
       e.preventDefault();
    
       try {
-        if(id_notas === editarNota.id_notas){
-          res = await TraerNotas.ModificarNota({ id_usuarios, id_notas });
+        console.log('editarNota.id_notas', editarNota.id_notas);
+        console.log('id_notas', id_notas);
+
+        if(id_notas){
+          console.log('entro en el if');
+          const res = await TraerNotas.ModificarNota({ id_usuarios, id_notas });
+          console.log('res', res);
           const data = await res.json(); 
           console.log('DATA:', data);
           // setNuevaNota(data);
@@ -36,7 +41,7 @@ export function EditarNota() {
         //       setEditarNota(editarNota.titulo, editarNota.cuerpo );
         //       // console.log('setNuevaNota:',setNuevaNota(TraerNotas.infoNota))
         //   }
-          history('/')
+          // history(`/notas/mostrar-notas/${id_usuarios}/`)
         }
       }catch(error){
         console.log(error);
