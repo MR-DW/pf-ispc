@@ -75,12 +75,14 @@ Comando para instalar npm i nombreDependencia
 
 Para correr la aplicación de manera local, es necesario:
 --> Iniciar el servidor Apache(xampp) y MySQL. Abrir el PHPMyAdmin. Donde se ubica la base de datos.
---> Iniciar Django con el comando en terminal: python manage.py runserver.
---> Iniciar React con el comando en terminal: npm start.
+--> Abrir la consola (cmd)
+--> Iniciar Django con el comando en terminal: python manage.py runserver -> todo en la carpeta donde se encuentre el archivo manage.py.
+--> Iniciar React con el comando en terminal: npm start
 
 | Finalizar uso de la aplicación: |
 
 Para cortar la aplicación, es necesario:
+
 --> Apagar servidor Apache(xampp) y MySQL. Desde terminal de operaciones propias (xampp).
 --> Apagar Django mediante el comando en terminal: ctrl + c.
 --> Apagar React mediante el comando en terminal: ctrl + c. Y luego: y.
