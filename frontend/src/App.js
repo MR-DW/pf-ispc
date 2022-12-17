@@ -14,9 +14,7 @@ function App() {
     <>
       <NavBar/> 
       <div className="App">
-
-        <h1 className="titulo" >Tus Notas</h1>
-
+        
         <ListadoDeNotas/>
         
       </div>

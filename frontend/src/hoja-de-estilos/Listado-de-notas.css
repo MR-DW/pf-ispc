@@ -1,0 +1,15 @@
+#container-notas{
+   position: absolute;
+   left: 15%;
+   /* right: auto; */
+}
+
+
+.titulo{
+    margin: 0 0 2%;
+}
+
+#card{
+    margin: .2%;
+    width: 25%;
+}

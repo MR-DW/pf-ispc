@@ -1,0 +1,24 @@
+#container-tu-nota{
+    margin-top: 2%;
+    display: flex;
+    flex-direction: column;
+}
+
+.card{
+    position: relative;
+    /* top: 10%; */
+    left: 5%;
+    width: 90%;
+}
+
+.button-div{
+    position: relative;
+    left: 35%;
+    /* right: auto; */
+}
+
+#button-editar{
+    margin-right: 5%;
+    width: 10%;
+}
+

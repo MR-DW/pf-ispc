@@ -1,7 +1,17 @@
 section{
-    background-color: rgb(244, 192, 149);
+    background-color: rgb(210, 210, 210);
     height: 100vh;
     width: 100vw;
+    padding: 2.5% 0 0;
+}
+
+#container-login{
+    margin-top: 5%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-content: center;
+    height: 50%;
 }
 
 h1{
@@ -9,16 +19,53 @@ h1{
     color:rgb(154, 78, 1);
 }
 
+
+img{
+    width: 25%;
+    height: 100%;
+    margin-right: 5%;
+}
+
 form{
+    margin-left: 5%;
     display: flex;
     flex-direction: column;
     justify-content: space-around;
     align-items: center;
-    color: rgb(154, 78, 1);
+    color: rgb(240, 147, 54);
     font-weight: 500;
 }
 
 label, input{
-    
+    margin: .5% 0 0;
 }
+
+button{
+    margin: 1.5% 0 0;
+}
+
+#boton-ver-nota{
+    /* margin-top: 40%; */
+    position: absolute;
+    right: 45%;
+    height: 10%;
+    width: 10%;
+}
+
+#container-bienvenido{
+    display: flex;
+    flex-direction: column;
+}
+
+h2{
+    text-align: center;
+    color:rgb(154, 78, 1);
+}
+
+.contenedor-h4-boton{
+    display: flex;
+    flex-direction: row;
+}
+
+
 
