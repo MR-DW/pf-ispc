@@ -33,7 +33,7 @@ export function NavBar() {
           <div className="collapse navbar-collapse" id="navbarNav">
             <ul className="navbar-nav">
               <li className="nav-link active">
-                <button className="btn btn-secondary">
+                <button className="btn btn-dark">
                   <Link aria-current="page" to="/">
                     Iniciar Sesion
                   </Link>
@@ -41,7 +41,7 @@ export function NavBar() {
               </li>
 
               <li className="nav-link active">
-                <button className="btn btn-secondary">
+                <button className="btn btn-dark">
                   <Link
                     aria-current="page"
                     to={`/notas/mostrar-notas/${id_usuarios}/`}
@@ -52,7 +52,7 @@ export function NavBar() {
               </li>
 
               <li className="nav-link active">
-                <button className="btn btn-secondary">
+                <button className="btn btn-dark">
                   <Link
                     aria-current="page"
                     to={`/notas/crear-nota/${id_usuarios}/`}
@@ -63,7 +63,7 @@ export function NavBar() {
               </li>
 
               <li className="nav-link active">
-                <button className="btn btn-secondary">
+                <button className="btn btn-dark">
                   <Link aria-current="page" to="/">
                     Cerrar Sesion
                   </Link>

@@ -1,6 +1,9 @@
 import React, { useState } from "react";
 // , useEffect
 import { useNavigate, useParams } from "react-router-dom";
+// Import hoja-de-estilos Css
+import "../../hoja-de-estilos/login.css";
+// Import server
 import * as ManejarUsuarios from "../../ServiciosApi/ManejarUsuarios";
 
 export function RegistrarUsuario() {
@@ -60,7 +63,9 @@ export function RegistrarUsuario() {
 
   return (
     <>
+     <section>
       <h2>CREA TU USUARIO</h2>
+      <hr></hr>
       <form onSubmit={handleSubmit}>
         <div className="mb-3">
           <label htmlFor="exampleFormControlInput1" className="form-label">
@@ -126,10 +131,11 @@ export function RegistrarUsuario() {
             onChange={handleInputChange}
           ></input>
         </div>
-        <button type="submit" className="btn btn-primary">
+        <button type="submit" className="btn btn-dark">
           REGISTRARSE
         </button>
       </form>
+      </section>
     </>
   );
 }
